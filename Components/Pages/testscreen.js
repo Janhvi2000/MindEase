@@ -117,7 +117,7 @@ const Questionnaire = () => {
       ) : (
       <View style={styles.questionBox}>
           <Text style={styles.questionText}>{categories[currentCategory]}</Text>
-          <Image source={testImage} style={styles.testImage} />
+          <Image source={testImage} style={styles.image} />
           <View style={styles.box}>
             <Text style={styles.questionText1}>{getQuestionNumber(currentCategory, currentQuestion)}.{' '}{categoryQuestions[currentCategory][currentQuestion]}</Text>
             <View style={styles.optionsBox}>

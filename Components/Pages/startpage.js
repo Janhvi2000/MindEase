@@ -8,7 +8,7 @@ const Start = () => {
   return (
     <View style={styles.container}>
       <View style={styles.startBox}>
-        <Image source={yoga} style={styles.yogaImage} />
+        <Image source={yoga} style={styles.image} />
         <Text style={styles.startText}>Welcome to</Text>
         <Text style={styles.startText1}>MindEase</Text>
       </View>

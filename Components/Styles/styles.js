@@ -22,10 +22,31 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     marginTop: 20,
     width: '90%', 
+    marginBottom: 20,
+    alignSelf: 'center',
+  },
+  image: {
+    width: 300,
+    height: 300,
+    alignSelf: 'center',
+    marginTop: 20,
+    marginBottom: 30,
+  },
+  secondbuttonText: {
+    fontSize: 16,
+    textAlign: 'center',
+    color: '#9985FF',
+  },
+  secondButton: {
+    backgroundColor: '#ffffff',
+    padding: 10,
+    borderRadius: 100,
+    borderColor: '#9985FF',
+    borderWidth: 1,
+    width: '90%', 
     marginBottom: 60,
     alignSelf: 'center',
   },
-
 
 //Style for Testscreen
   testImage: {
