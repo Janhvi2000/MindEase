@@ -1,6 +1,9 @@
 import { StyleSheet } from 'react-native';
 
+
 const styles = StyleSheet.create({
+
+  //overall components
   container: {
     flex: 1,
     justifyContent: 'flex-center',
@@ -8,6 +11,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     overflow: 'scroll',
   },
+  nextbuttonText: {
+    fontSize: 16,
+    textAlign: 'center',
+    color: '#ffffff',
+  },
+  nextButton: {
+    backgroundColor: '#9985FF',
+    padding: 10,
+    borderRadius: 100,
+    marginTop: 20,
+    width: '90%', 
+    marginBottom: 60,
+    alignSelf: 'center',
+  },
+
+
+//Style for Testscreen
   testImage: {
     width: 300,
     height: 300,
@@ -53,19 +73,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: '100%', 
   },
-  nextbuttonText: {
-    fontSize: 16,
-    textAlign: 'center',
-    color: '#ffffff',
-  },
-  nextButton: {
-    backgroundColor: '#9985FF',
-    padding: 10,
-    borderRadius: 100,
-    marginTop: 20,
-    width: '100%', 
-    marginBottom: 60,
-  },
   summaryContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -105,6 +112,35 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: 20,
   },
+
+
+//Style for startpage
+
+startBox: {
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginTop: 20,
+  paddingHorizontal: 20,
+  width: '90%',
+},
+yogaImage: {
+  width: 300,
+  height: 300,
+  alignSelf: 'center',
+  marginTop: 20,
+  marginBottom: 30,
+},
+startText: {
+  fontSize: 45,
+  textAlign: 'center',
+  color: '#9985FF',
+},
+startText1: {
+  fontSize: 60,
+  textAlign: 'center',
+  fontWeight: 'bold',
+},
+
 });
 
 export default styles;

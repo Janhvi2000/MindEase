@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Test from './Components/Pages/testscreen';
+import Start from './Components/Pages/startpage';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,7 +13,7 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Test"
+        initialRouteName="Start Page"
         screenOptions={{
           headerStyle: { backgroundColor: '#9985FF' },
           headerTintColor: '#fff',
@@ -22,6 +23,11 @@ function App() {
           name="Test"
           component={Test}
           options={{ title: 'Test Screen' }}
+        />
+        <Stack.Screen
+          name="Start Page"
+          component={Start}
+          options={{ title: 'Start Screen' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
