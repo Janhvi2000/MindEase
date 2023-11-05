@@ -1,1 +1,31 @@
 # MindEase
+
+
+## Description
+MindEase is a comprehensive mental health application designed to offer personalized resources and guidance to individuals seeking emotional well-being. It combines therapy tools, community support, and mindfulness practices to empower users to take control of their mental health journey.
+
+## Users
+
+1. **Individuals dealing with Anxiety**: Users seeking coping mechanisms, relaxation techniques, and a supportive community to manage anxiety-related challenges.
+2. **People Battling Depression**: Individuals in need of a safe space to share experiences, learn coping strategies, and find solace through peer support groups.
+3. **Stressed Professionals**: Users seeking stress management tools, mindfulness practices, and a supportive network to navigate work-related stress.
+4. **Students Coping with Academic Pressure**: Those looking for techniques to manage academic stress, access peer support, and gain resilience tools.
+5. **Caregivers and Support Seekers**: Individuals caring for others or seeking support while facing emotional challenges, providing a space for mutual understanding and support.
+6. **Individuals in Need of Personal Growth**: Users interested in personal development, mindfulness practices, and setting and achieving mental health-related goals.
+
+## Features
+
+1. **Personalized Assessments & Goal Setting**: Users complete assessments to identify their mental health needs and set personalized goals, addressing their specific concerns.
+2. **Therapy Toolbox**: Access to a variety of resources, such as breathing exercises, guided meditations, and cognitive behavioral therapy (CBT) techniques, aiding users in coping with daily stressors and mental health issues.
+3. **Community Support & Discussion Forums**: A platform for users to connect, share experiences, and offer mutual support, fostering a sense of belonging and reducing isolation.
+4. **Guided Journeys & Progress Tracking**: Users can follow guided paths to achieve mental wellness milestones, while tracking their progress and adjustments in their mental health journey.
+5. **Peer Support Groups**: Fosters a supportive community by enabling users to create and join peer support groups, facilitating discussions, sharing coping strategies, and offering mutual support, fostering camaraderie among individuals facing similar mental health challenges.
+
+## APIs
+
+- Youtube API for getting video recommendations
+- Google Auth for authentication
+- Google Books API for recommending books
+- Profile pic API by DiceBear
+- Custom API using FastAPI to get data from the database
+
