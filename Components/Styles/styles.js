@@ -5,12 +5,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-center',
     alignItems: 'center',
-    marginBottom: '100',
     backgroundColor: '#ffffff',
+    overflow: 'scroll',
   },
   testImage: {
-    width: 200,
-    height: 200,
+    width: 300,
+    height: 300,
     alignSelf: 'center',
     marginTop: 20,
     marginBottom: 30,
@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingHorizontal: 20,
     width: '90%', 
+    marginBottom: 20,
   },
   questionText: {
     fontSize: 20,
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 10,
     marginVertical: 5,
-    width: '100%', // Set the width to 100%
+    width: '100%', 
   },
   buttonText: {
     fontSize: 16,
@@ -63,16 +64,17 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     marginTop: 20,
     width: '100%', 
+    marginBottom: 60,
   },
   summaryContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     margin: 20,
-    width: '100%',
+    width: '80%',
   },
   summaryBox: {
-    width: '100%',
+    width: '90%',
     borderWidth: 1,
     borderColor: '#9985FF',
     padding: 15,
@@ -97,6 +99,11 @@ const styles = StyleSheet.create({
   summaryText: {
     fontSize: 30,
     fontWeight: 'bold',
+  },
+  scrollViewStyle: {
+    flexGrow: 1,
+    width: '100%',
+    marginBottom: 20,
   },
 });
 
