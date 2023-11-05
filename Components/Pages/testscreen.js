@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import testImage from '../Pictures/Test.png';
 import styles from '../Styles/styles';
 
@@ -39,7 +39,7 @@ const options = ['1', '2', '3', '4', '5']; // Radio button labels
 const Questionnaire = () => {
   const [currentCategory, setCurrentCategory] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState(Array(category1.length + category2.length + category3.length).fill('not answered'));
+  const [answers, setAnswers] = useState(Array(category1.length + category2.length + category3.length).fill('Not answered'));
   const [showSummary, setShowSummary] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null); // State to manage selected option
 
@@ -78,32 +78,44 @@ const Questionnaire = () => {
     <View style={styles.container}>
       {showSummary ? (
         <View style={styles.summaryContainer}>
-          <Image source={testImage} style={styles.testImage} />
-          <Text style={styles.summaryText}>Summary</Text>
-          {answers.map((answer, index) => (
-            <Text key={index} style={{ color: '#9985FF' }}>
-              {answer !== 'not answered'
-                ? `${getQuestionNumber(
-                    Math.floor(index / categoryQuestions[0].length),
-                    index % categoryQuestions[0].length
-                  )}. ${
-                    categoryQuestions[Math.floor(index / categoryQuestions[0].length)][
-                      index % categoryQuestions[0].length
-                    ]
-                  } - Answer: ${answer}`
-                : `${getQuestionNumber(
-                    Math.floor(index / categoryQuestions[0].length),
-                    index % categoryQuestions[0].length
-                  )}. ${
-                    categoryQuestions[Math.floor(index / categoryQuestions[0].length)][
-                      index % categoryQuestions[0].length
-                    ]
-                  } - Answer: not answered`}
-            </Text>
-          ))}
-        </View>
+        <Text style={styles.summaryText}>Summary</Text>
+        <ScrollView style={styles.summaryScrollView}>
+          <View style={styles.summaryBox}>
+            {answers.map((answer, index) => (
+              <View key={index} style={styles.summaryAnswer}>
+                <Text style={styles.summaryQuestion}>
+                  {answer !== 'Not answered'
+                    ? `${getQuestionNumber(
+                        Math.floor(index / categoryQuestions[0].length),
+                        index % categoryQuestions[0].length
+                      )}. ${
+                        categoryQuestions[Math.floor(index / categoryQuestions[0].length)][
+                          index % categoryQuestions[0].length
+                        ]
+                      }`
+                    : `${getQuestionNumber(
+                        Math.floor(index / categoryQuestions[0].length),
+                        index % categoryQuestions[0].length
+                      )}. ${
+                        categoryQuestions[Math.floor(index / categoryQuestions[0].length)][
+                          index % categoryQuestions[0].length
+                        ]
+                      }`
+                  }
+                </Text>
+                <Text style={styles.summaryAnswerText}>
+                  Answer: {answer !== 'Not answered' ? answer : 'Not answered'}
+                </Text>
+              </View>
+            ))}
+          </View>
+          <TouchableOpacity onPress={handleNext} style={styles.nextButton}>
+          <Text style={styles.nextbuttonText}>Next</Text>
+        </TouchableOpacity>
+        </ScrollView>
+      </View>
       ) : (
-        <View style={styles.questionBox}>
+      <View style={styles.questionBox}>
           <Text style={styles.questionText}>{categories[currentCategory]}</Text>
           <Image source={testImage} style={styles.testImage} />
           <View style={styles.box}>
@@ -127,9 +139,9 @@ const Questionnaire = () => {
             </TouchableOpacity>
           </View>
         </View>
-      )}
-    </View>
-  );
+    )}
+  </View>
+);
 };
 
 export default Questionnaire;

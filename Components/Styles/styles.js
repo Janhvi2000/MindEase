@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'normal',
+    justifyContent: 'flex-center',
     alignItems: 'center',
     marginBottom: '100',
     backgroundColor: '#ffffff',
@@ -65,16 +65,39 @@ const styles = StyleSheet.create({
     width: '100%', 
   },
   summaryContainer: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
+    margin: 20,
+    width: '100%',
   },
-  summaryText: {
-    fontSize: 20,
+  summaryBox: {
+    width: '100%',
+    borderWidth: 1,
+    borderColor: '#9985FF',
+    padding: 15,
+    borderRadius: 5,
+    margin: 10,  
+    alignSelf: 'center',
+  },
+  summaryAnswer: {
+    marginBottom: 10,
+  },
+  summaryQuestion: {
+    color: '#9985FF',
+    fontSize: 16,
     fontWeight: 'bold',
-    marginTop: 20,
+  },
+  summaryAnswerText: {
+    color: 'black',
   },
   box: {
     width: '100%',
-  }
+  },
+  summaryText: {
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
 });
 
 export default styles;
