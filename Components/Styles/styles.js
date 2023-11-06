@@ -6,10 +6,12 @@ import { StyleSheet } from 'react-native';
     //overall components
     container: {
       flex: 1,
-      justifyContent: 'flex-center',
+      justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: '#ffffff',
-      overflow: 'visible',
+      overflow: 'scroll',
+      height: '100%',
+      width: '100%',
     },
     nextbuttonText: {
       fontSize: 16,
@@ -48,6 +50,20 @@ import { StyleSheet } from 'react-native';
       marginBottom: 40,
       alignSelf: 'center',
     },
+    bottomContainer: {
+      marginTop: 20,
+      marginBottom: 40,
+      width: '100%',
+      minHeight: '5%',
+      justifyContent: 'center',
+      alignItems:'center',
+      bottom: 0,
+    },
+    end: {
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    marginBottom: 20,
+    },
   
   //Style for Testscreen
     questionBox: {
@@ -58,6 +74,7 @@ import { StyleSheet } from 'react-native';
       width: '100%', 
       height: '100%',
       marginBottom: 20,
+      overflow: 'visible',
     },
     questionText: {
       fontSize: 20,
@@ -128,13 +145,6 @@ import { StyleSheet } from 'react-native';
       width: '100%',
       marginBottom: 20,
     },
-    bottomContainer: {
-      flex: 1,
-      justifyContent: 'center',
-      marginBottom: 60,
-      width: '100%',
-      height: '100%',
-    },
   
   
   //Style for startpage
@@ -157,19 +167,10 @@ import { StyleSheet } from 'react-native';
     fontWeight: 'bold',
   },
 
-  //Style for welcome page
-  buttonContainer: {
-    flex: 1,
-    marginTop: 200,
-    justifyContent: 'center',
-    width: '100%',
-  },
-
-
   //style for feedback page
   input: { 
     width: '80%',
-    height: '60%',
+    minHeight: '30%',
     borderRadius: 30,
     borderColor: '#9985FF',
     borderWidth: 1,
@@ -179,10 +180,10 @@ import { StyleSheet } from 'react-native';
     alignSelf: 'center',
     fontSize: 20,
     color: '#9985FF',
-    overflow: 'hidden',
+    overflow: 'visible',
   },
 
-//styles for signup page
+//styles for signup page and login page
   inputfield: {
     fontSize: 16,
       textAlign: 'center',
@@ -193,16 +194,18 @@ import { StyleSheet } from 'react-native';
       borderColor: '#9985FF',
       borderWidth: 1,
       width: '80%', 
-      marginBottom: 15,
+      marginBottom: 10,
       alignSelf: 'center',
   },
 line: {
-  borderBottomWidth: 4, 
+  borderBottomWidth: 3, 
   borderBottomColor: '#9985FF', 
   width: '80%',
   alignSelf: 'center',
   marginBottom: 20,
+  borderRadius: 100,
 }
+
   
   });
   

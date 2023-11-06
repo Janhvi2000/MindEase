@@ -10,6 +10,7 @@ import Welcome from './Components/Pages/welcome';
 import Home from './Components/Pages/home';
 import Feedback from './Components/Pages/feedback';
 import Signup from './Components/Pages/signup';
+import Login from './Components/Pages/login';
 
 const Stack = createNativeStackNavigator();
 
@@ -46,6 +47,10 @@ function App() {
         <Stack.Screen
           name="Signup"
           component={Signup}
+        />
+        <Stack.Screen
+          name="Login"
+          component={Login}
         />
       </Stack.Navigator>
     </NavigationContainer>

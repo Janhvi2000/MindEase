@@ -6,12 +6,10 @@ import welcome from '../Pictures/welcome.png';
 const Welcome = ({navigation}) => {
   return (
     <View style={styles.container}>
-      <View style={styles.startBox}>
-        <Image source={welcome} style={styles.image} />
-      </View>
-      <View style= {styles.buttonContainer}>
+      <View style= {styles.bottomContainer}>
+      <Image source={welcome} style={styles.image} />
         <TouchableOpacity style={styles.nextButton}>
-        <Text style={styles.nextbuttonText} onPress={() => navigation.navigate('Home')}>Login</Text>
+        <Text style={styles.nextbuttonText} onPress={() => navigation.navigate('Login')}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.secondButton}>
           <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('Signup')}>Sign up</Text>

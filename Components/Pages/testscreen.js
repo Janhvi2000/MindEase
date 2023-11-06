@@ -143,7 +143,7 @@ const Questionnaire = ({navigation}) => {
                 </TouchableOpacity>
               ))}
             </View>
-            <View style= {styles.bottomContainer}>
+          <View style= {styles.bottomContainer}>
           <TouchableOpacity onPress={handleNext} style={styles.nextButton}>
           <Text style={styles.nextbuttonText}>Next</Text>
           </TouchableOpacity>

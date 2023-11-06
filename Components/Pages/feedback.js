@@ -12,14 +12,14 @@ const Feedback = ({navigation}) => {
 
     return (
       <View style={styles.container}>
-        <Image source={feedback} style={styles.image} />
           <View style={styles.bottomContainer}>
+          <Image source={feedback} style={styles.image} />
           <TextInput
             style={styles.input}
             onChangeText={handleTextChange}
             placeholder="Comments..."
             multiline={true} 
-            numberOfLines={4} 
+            numberOfLines={3} 
         />
           <TouchableOpacity style={styles.nextButton}>
             <Text style={styles.nextbuttonText} onPress={() => navigation.navigate('Home')}>Feedback</Text>
