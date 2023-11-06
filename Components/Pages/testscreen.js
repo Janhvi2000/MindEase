@@ -109,9 +109,11 @@ const Questionnaire = () => {
               </View>
             ))}
           </View>
+          <View style= {styles.bottomContainer}>
           <TouchableOpacity onPress={handleNext} style={styles.nextButton}>
           <Text style={styles.nextbuttonText}>Next</Text>
-        </TouchableOpacity>
+          </TouchableOpacity>
+          </View>
         </ScrollView>
       </View>
       ) : (
@@ -134,9 +136,11 @@ const Questionnaire = () => {
                 </TouchableOpacity>
               ))}
             </View>
-            <TouchableOpacity onPress={handleNext} style={styles.nextButton}>
-              <Text style={styles.nextbuttonText}>Next</Text>
-            </TouchableOpacity>
+            <View style= {styles.bottomContainer}>
+          <TouchableOpacity onPress={handleNext} style={styles.nextButton}>
+          <Text style={styles.nextbuttonText}>Next</Text>
+          </TouchableOpacity>
+          </View>
           </View>
         </View>
     )}

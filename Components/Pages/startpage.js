@@ -7,14 +7,16 @@ import yoga from '../Pictures/yoga.png';
 const Start = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.startBox}>
+      <View style={styles.questionBox}>
         <Image source={yoga} style={styles.image} />
         <Text style={styles.startText}>Welcome to</Text>
         <Text style={styles.startText1}>MindEase</Text>
-      </View>
-      <TouchableOpacity style={styles.nextButton}>
+    <View style= {styles.bottomContainer}>
+        <TouchableOpacity style={styles.nextButton}>
         <Text style={styles.nextbuttonText}>Next</Text>
-      </TouchableOpacity>
+        </TouchableOpacity>
+        </View>
+        </View>
     </View>
   );
 };

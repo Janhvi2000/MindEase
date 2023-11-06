@@ -7,6 +7,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Test from './Components/Pages/testscreen';
 import Start from './Components/Pages/startpage';
 import Welcome from './Components/Pages/welcome';
+import Home from './Components/Pages/home';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,7 +15,7 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Welcome"
+        initialRouteName="Home"
         screenOptions={{
           headerStyle: { backgroundColor: '#9985FF' },
           headerTintColor: '#fff',
@@ -23,17 +24,18 @@ function App() {
         <Stack.Screen
           name="Test"
           component={Test}
-          options={{ title: 'Test Screen' }}
         />
         <Stack.Screen
           name="Start Page"
           component={Start}
-          options={{ title: 'Start Screen' }}
         />
         <Stack.Screen
           name="Welcome"
           component={Welcome}
-          options={{ title: 'Welcome Screen' }}
+        />
+        <Stack.Screen
+          name="Home"
+          component={Home}
         />
       </Stack.Navigator>
     </NavigationContainer>
