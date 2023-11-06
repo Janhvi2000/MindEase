@@ -8,6 +8,7 @@ import Test from './Components/Pages/testscreen';
 import Start from './Components/Pages/startpage';
 import Welcome from './Components/Pages/welcome';
 import Home from './Components/Pages/home';
+import Feedback from './Components/Pages/feedback';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,7 +16,7 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="Feedback"
         screenOptions={{
           headerStyle: { backgroundColor: '#9985FF' },
           headerTintColor: '#fff',
@@ -36,6 +37,10 @@ function App() {
         <Stack.Screen
           name="Home"
           component={Home}
+        />
+        <Stack.Screen
+          name="Feedback"
+          component={Feedback}
         />
       </Stack.Navigator>
     </NavigationContainer>

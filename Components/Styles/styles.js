@@ -26,8 +26,8 @@ import { StyleSheet } from 'react-native';
       alignSelf: 'center',
     },
     image: {
-      width: 350,
-      height: 350,
+      width: 300,
+      height: 300,
       alignSelf: 'center',
       marginTop: 20,
       marginBottom: 30,
@@ -133,6 +133,7 @@ import { StyleSheet } from 'react-native';
       justifyContent: 'center',
       marginBottom: 60,
       width: '100%',
+      height: '100%',
     },
   
   
@@ -169,6 +170,23 @@ import { StyleSheet } from 'react-native';
     marginTop: 200,
     justifyContent: 'center',
     width: '100%',
+  },
+
+
+  //style for feedback page
+  input: { 
+    width: '80%',
+    height: '60%',
+    borderRadius: 30,
+    borderColor: '#9985FF',
+    borderWidth: 1,
+    marginTop: 20,
+    marginBottom: 20,
+    padding: 20,
+    alignSelf: 'center',
+    fontSize: 20,
+    color: '#9985FF',
+    overflow: 'hidden',
   },
   
   });
