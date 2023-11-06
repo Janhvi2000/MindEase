@@ -9,7 +9,7 @@ import { StyleSheet } from 'react-native';
       justifyContent: 'flex-center',
       alignItems: 'center',
       backgroundColor: '#ffffff',
-      overflow: 'scroll',
+      overflow: 'visible',
     },
     nextbuttonText: {
       fontSize: 16,
@@ -31,6 +31,7 @@ import { StyleSheet } from 'react-native';
       alignSelf: 'center',
       marginTop: 20,
       marginBottom: 30,
+      resizeMode: 'contain',
     },
     secondbuttonText: {
       fontSize: 16,
@@ -54,10 +55,9 @@ import { StyleSheet } from 'react-native';
       justifyContent: 'center',
       marginTop: 20,
       paddingHorizontal: 20,
-      width: '90%', 
+      width: '100%', 
       height: '100%',
       marginBottom: 20,
-      overflow: 'scroll',
     },
     questionText: {
       fontSize: 20,
@@ -65,7 +65,7 @@ import { StyleSheet } from 'react-native';
       marginTop: 10,
       color: '#9985FF',
       fontWeight: 'bold',
-      marginBottom: 20,
+      marginBottom: 10,
     },
     questionText1: {
       fontSize: 15,
@@ -94,10 +94,10 @@ import { StyleSheet } from 'react-native';
       justifyContent: 'center',
       alignItems: 'center',
       margin: 20,
-      width: '80%',
+      width: '90%',
     },
     summaryBox: {
-      width: '90%',
+      width: '100%',
       borderWidth: 1,
       borderColor: '#9985FF',
       padding: 15,
@@ -146,13 +146,6 @@ import { StyleSheet } from 'react-native';
     paddingHorizontal: 20,
     width: '90%',
   },
-  yogaImage: {
-    width: 300,
-    height: 300,
-    alignSelf: 'center',
-    marginTop: 20,
-    marginBottom: 30,
-  },
   startText: {
     fontSize: 45,
     textAlign: 'center',
@@ -188,6 +181,28 @@ import { StyleSheet } from 'react-native';
     color: '#9985FF',
     overflow: 'hidden',
   },
+
+//styles for signup page
+  inputfield: {
+    fontSize: 16,
+      textAlign: 'center',
+      color: '#9985FF',
+      backgroundColor: '#ffffff',
+      padding: 15,
+      borderRadius: 100,
+      borderColor: '#9985FF',
+      borderWidth: 1,
+      width: '80%', 
+      marginBottom: 15,
+      alignSelf: 'center',
+  },
+line: {
+  borderBottomWidth: 4, 
+  borderBottomColor: '#9985FF', 
+  width: '80%',
+  alignSelf: 'center',
+  marginBottom: 20,
+}
   
   });
   

@@ -36,7 +36,7 @@ const categories = ['Personal Characteristics & Traits', 'Emotional Intelligence
 
 const options = ['1', '2', '3', '4', '5']; // Radio button labels
 
-const Questionnaire = () => {
+const Questionnaire = ({navigation}) => {
   const [currentCategory, setCurrentCategory] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState(Array(category1.length + category2.length + category3.length).fill('Not answered'));
@@ -74,12 +74,18 @@ const Questionnaire = () => {
     setSelectedOption(null); 
   }, [currentQuestion, currentCategory]);
 
+  const handleNextAndNavigate = () => {
+    navigation.navigate('Home');
+  };
+
+
   return (
     <View style={styles.container}>
       {showSummary ? (
+        <ScrollView style={styles.summaryScrollView}>
         <View style={styles.summaryContainer}>
         <Text style={styles.summaryText}>Summary</Text>
-        <ScrollView style={styles.summaryScrollView}>
+        
           <View style={styles.summaryBox}>
             {answers.map((answer, index) => (
               <View key={index} style={styles.summaryAnswer}>
@@ -110,17 +116,18 @@ const Questionnaire = () => {
             ))}
           </View>
           <View style= {styles.bottomContainer}>
-          <TouchableOpacity onPress={handleNext} style={styles.nextButton}>
-          <Text style={styles.nextbuttonText}>Next</Text>
-          </TouchableOpacity>
+          <TouchableOpacity onPress={handleNextAndNavigate} style={styles.nextButton}>
+              <Text style={styles.nextbuttonText}>Next</Text>
+            </TouchableOpacity>
           </View>
-        </ScrollView>
+
       </View>
+      </ScrollView>
       ) : (
       <View style={styles.questionBox}>
-          <Text style={styles.questionText}>{categories[currentCategory]}</Text>
           <Image source={testImage} style={styles.image} />
           <View style={styles.box}>
+            <Text style={styles.questionText}>{categories[currentCategory]}</Text>
             <Text style={styles.questionText1}>{getQuestionNumber(currentCategory, currentQuestion)}.{' '}{categoryQuestions[currentCategory][currentQuestion]}</Text>
             <View style={styles.optionsBox}>
               {options.map((option, index) => (
