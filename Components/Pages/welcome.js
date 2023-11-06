@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import styles from '../Styles/styles';
 import welcome from '../Pictures/welcome.png';
 
-const Welcome = () => {
+const Welcome = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.startBox}>
@@ -11,12 +11,12 @@ const Welcome = () => {
       </View>
       <View style= {styles.buttonContainer}>
         <TouchableOpacity style={styles.nextButton}>
-        <Text style={styles.nextbuttonText}>Login</Text>
+        <Text style={styles.nextbuttonText} onPress={() => navigation.navigate('Home')}>Login</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.secondButton}>
-          <Text style={styles.secondbuttonText}>Sign up</Text>
+          <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('Signup')}>Sign up</Text>
         </TouchableOpacity>
-        </View>
+      </View>
     </View>
   );
 };

@@ -4,7 +4,7 @@ import feedback from '../Pictures/feedback.png';
 import styles from '../Styles/styles';
 
 
-const Feedback = () => {
+const Feedback = ({navigation}) => {
     const handleTextChange = (inputText) => {
         setText(inputText);
       };
@@ -22,7 +22,7 @@ const Feedback = () => {
             numberOfLines={4} 
         />
           <TouchableOpacity style={styles.nextButton}>
-            <Text style={styles.nextbuttonText}>Feedback</Text>
+            <Text style={styles.nextbuttonText} onPress={() => navigation.navigate('Home')}>Feedback</Text>
           </TouchableOpacity>
           </View>
       </View>

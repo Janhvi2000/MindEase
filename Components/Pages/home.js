@@ -3,7 +3,9 @@ import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'rea
 import home from '../Pictures/home.png';
 import styles from '../Styles/styles';
 
-const Home = () => {
+
+
+const Home = ({navigation}) => {
     return (
       <View style={styles.container}>
           <Image source={home} style={styles.image} />
@@ -17,7 +19,7 @@ const Home = () => {
             <Text style={styles.secondbuttonText}>Resource Library</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.secondButton}>
-            <Text style={styles.secondbuttonText}>Feedback</Text>
+            <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('Feedback')}>Feedback</Text>
           </TouchableOpacity>
       </View>
     );
