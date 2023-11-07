@@ -10,7 +10,7 @@ const Home = ({navigation}) => {
       <View style={styles.container}>
           <Image source={home} style={styles.image} />
           <TouchableOpacity style={styles.secondButton}>
-            <Text style={styles.secondbuttonText}>Crisis Support</Text>
+            <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('Crisis')}>Crisis Support</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.secondButton}>
             <Text style={styles.secondbuttonText}>Personal Progress</Text>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, TextInput } from 'react-native';
-import sign from '../Pictures/Signup.png';
+import login from '../Pictures/Login.png';
 import styles from '../Styles/styles';
 
 
@@ -10,7 +10,7 @@ const Login = ({navigation}) => {
       <View style={styles.container}>
           
           <View style= {styles.bottomContainer}>
-          <Image source={sign} style={styles.image} />
+          <Image source={login} style={styles.image} />
           <TouchableOpacity style={styles.nextButton}>
           <Text style={styles.nextbuttonText} onPress={() => navigation.navigate('Home')}>Login with Google</Text>
         </TouchableOpacity>

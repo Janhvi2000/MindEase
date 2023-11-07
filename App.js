@@ -11,6 +11,7 @@ import Home from './Components/Pages/home';
 import Feedback from './Components/Pages/feedback';
 import Signup from './Components/Pages/signup';
 import Login from './Components/Pages/login';
+import Crisis from './Components/Pages/crisissupport';
 
 const Stack = createNativeStackNavigator();
 
@@ -51,6 +52,10 @@ function App() {
         <Stack.Screen
           name="Login"
           component={Login}
+        />
+        <Stack.Screen
+          name="Crisis"
+          component={Crisis}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -165,6 +165,7 @@ import { StyleSheet } from 'react-native';
     fontSize: 60,
     textAlign: 'center',
     fontWeight: 'bold',
+    marginBottom: 60,
   },
 
   //style for feedback page
@@ -204,9 +205,41 @@ line: {
   alignSelf: 'center',
   marginBottom: 20,
   borderRadius: 100,
-}
+},
+
+
+//style for crisis support
+buttonItem: {
+  flexDirection: 'row',
+  backgroundColor: '#ffffff',
+  padding: 5,
+  borderRadius: 100,
+  borderColor: '#9985FF',
+  borderWidth: 1,
+  width: '80%',
+  marginBottom: 20,
+},
+iconTextContainer: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  flex: 1,
+},
+img: {
+  width: 40,
+  height: 40,
+  justifyContent: 'flex-start',
+  resizeMode: 'contain',
+},
+secondbuttonText1: {
+  fontSize: 16,
+  textAlign: 'center',
+  color: '#9985FF',
+  width: '100%',
+  position: 'absolute',
+  padding: 5,
+},
 
   
-  });
+});
   
   export default styles;
