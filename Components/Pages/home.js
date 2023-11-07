@@ -8,6 +8,7 @@ import styles from '../Styles/styles';
 const Home = ({navigation}) => {
     return (
       <View style={styles.container}>
+        <View style={styles.bottomContainer}>
           <Image source={home} style={styles.image} />
           <TouchableOpacity style={styles.secondButton}>
             <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('Crisis')}>Crisis Support</Text>
@@ -21,6 +22,7 @@ const Home = ({navigation}) => {
           <TouchableOpacity style={styles.secondButton}>
             <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('Feedback')}>Feedback</Text>
           </TouchableOpacity>
+          </View>
       </View>
     );
   };

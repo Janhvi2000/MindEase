@@ -10,8 +10,9 @@ import { StyleSheet } from 'react-native';
       alignItems: 'center',
       backgroundColor: '#ffffff',
       overflow: 'scroll',
-      height: '100%',
+      minHeight: '100%',
       width: '100%',
+      overflow: 'scroll',
     },
     nextbuttonText: {
       fontSize: 16,
@@ -22,7 +23,7 @@ import { StyleSheet } from 'react-native';
       backgroundColor: '#9985FF',
       padding: 15,
       borderRadius: 100,
-      marginTop: 20,
+      marginTop: 10,
       width: '80%', 
       marginBottom: 20,
       alignSelf: 'center',
@@ -108,15 +109,11 @@ import { StyleSheet } from 'react-native';
     },
     summaryContainer: {
       flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
       margin: 20,
-      width: '90%',
+      width: '80%',
     },
     summaryBox: {
       width: '100%',
-      borderWidth: 1,
-      borderColor: '#9985FF',
       padding: 15,
       borderRadius: 5,
       margin: 10,  
@@ -139,11 +136,6 @@ import { StyleSheet } from 'react-native';
     summaryText: {
       fontSize: 30,
       fontWeight: 'bold',
-    },
-    scrollViewStyle: {
-      flexGrow: 1,
-      width: '100%',
-      marginBottom: 20,
     },
   
   

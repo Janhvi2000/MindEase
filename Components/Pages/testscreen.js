@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import testImage from '../Pictures/Test.png';
 import styles from '../Styles/styles';
 
 const category1 = [
@@ -82,11 +81,10 @@ const Questionnaire = ({navigation}) => {
   return (
     <View style={styles.container}>
       {showSummary ? (
-        <ScrollView style={styles.summaryScrollView}>
-        <View style={styles.summaryContainer}>
-        <Text style={styles.summaryText}>Summary</Text>
-        
+        <View style={styles.summaryContainer}>  
+        <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
           <View style={styles.summaryBox}>
+          <Text style={styles.summaryText}>Summary</Text>
             {answers.map((answer, index) => (
               <View key={index} style={styles.summaryAnswer}>
                 <Text style={styles.summaryQuestion}>
@@ -120,12 +118,10 @@ const Questionnaire = ({navigation}) => {
               <Text style={styles.nextbuttonText}>Next</Text>
             </TouchableOpacity>
           </View>
-
+          </ScrollView>
       </View>
-      </ScrollView>
       ) : (
       <View style={styles.questionBox}>
-          <Image source={testImage} style={styles.image} />
           <View style={styles.box}>
             <Text style={styles.questionText}>{categories[currentCategory]}</Text>
             <Text style={styles.questionText1}>{getQuestionNumber(currentCategory, currentQuestion)}.{' '}{categoryQuestions[currentCategory][currentQuestion]}</Text>
