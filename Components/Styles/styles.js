@@ -207,12 +207,12 @@ line: {
 buttonItem: {
   flexDirection: 'row',
   backgroundColor: '#ffffff',
-  padding: 5,
+  paddingHorizontal: 7,
   borderRadius: 100,
   borderColor: '#9985FF',
   borderWidth: 1,
   width: '80%',
-  height: '7%',
+  height: '6%',
   marginBottom: 20,
 },
 iconTextContainer: {
@@ -223,6 +223,7 @@ iconTextContainer: {
 img: {
   width: 40,
   height: 40,
+  borderRadius: 100,
   justifyContent: 'flex-start',
   resizeMode: 'contain',
 },
