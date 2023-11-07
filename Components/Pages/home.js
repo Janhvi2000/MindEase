@@ -14,7 +14,7 @@ const Home = ({navigation}) => {
             <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('Crisis')}>Crisis Support</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.secondButton}>
-            <Text style={styles.secondbuttonText}>Personal Progress</Text>
+            <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('Profile')}>Profile</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.secondButton}>
             <Text style={styles.secondbuttonText}>Resource Library</Text>

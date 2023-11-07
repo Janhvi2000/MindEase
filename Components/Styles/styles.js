@@ -15,7 +15,7 @@ import { StyleSheet } from 'react-native';
       overflow: 'scroll',
     },
     nextbuttonText: {
-      fontSize: 16,
+      fontSize: 20,
       textAlign: 'center',
       color: '#ffffff',
     },
@@ -37,7 +37,7 @@ import { StyleSheet } from 'react-native';
       resizeMode: 'contain',
     },
     secondbuttonText: {
-      fontSize: 16,
+      fontSize: 20,
       textAlign: 'center',
       color: '#9985FF',
     },
@@ -78,15 +78,15 @@ import { StyleSheet } from 'react-native';
       overflow: 'visible',
     },
     questionText: {
-      fontSize: 20,
+      fontSize: 30,
       textAlign: 'center',
       marginTop: 10,
       color: '#9985FF',
       fontWeight: 'bold',
-      marginBottom: 10,
+      marginBottom: 20,
     },
     questionText1: {
-      fontSize: 15,
+      fontSize: 20,
       textAlign: 'justify',
       marginTop: 10,
     },
@@ -124,18 +124,20 @@ import { StyleSheet } from 'react-native';
     },
     summaryQuestion: {
       color: '#9985FF',
-      fontSize: 16,
+      fontSize: 20,
       fontWeight: 'bold',
     },
     summaryAnswerText: {
       color: 'black',
+      fontSize: 20,
     },
     box: {
       width: '100%',
     },
     summaryText: {
-      fontSize: 30,
       fontWeight: 'bold',
+      marginBottom: 10,
+      fontSize: 30,
     },
   
   
@@ -178,17 +180,18 @@ import { StyleSheet } from 'react-native';
 
 //styles for signup page and login page
   inputfield: {
-    fontSize: 16,
-      textAlign: 'center',
-      color: '#9985FF',
-      backgroundColor: '#ffffff',
-      padding: 15,
-      borderRadius: 100,
-      borderColor: '#9985FF',
-      borderWidth: 1,
-      width: '80%', 
-      marginBottom: 10,
-      alignSelf: 'center',
+    fontSize: 20,
+    textAlign: 'center',
+    color: '#9985FF',
+    backgroundColor: '#ffffff',
+    padding: 15,
+    borderRadius: 100,
+    borderColor: '#9985FF',
+    borderWidth: 1,
+    width: '80%', 
+    marginBottom: 20,
+    alignSelf: 'center',
+
   },
 line: {
   borderBottomWidth: 3, 
@@ -209,6 +212,7 @@ buttonItem: {
   borderColor: '#9985FF',
   borderWidth: 1,
   width: '80%',
+  height: '7%',
   marginBottom: 20,
 },
 iconTextContainer: {
@@ -223,12 +227,41 @@ img: {
   resizeMode: 'contain',
 },
 secondbuttonText1: {
-  fontSize: 16,
+  fontSize: 20,
   textAlign: 'center',
   color: '#9985FF',
   width: '100%',
   position: 'absolute',
   padding: 5,
+},
+
+//style for profile
+container1: {
+  display: 'flex',
+  flexDirection: 'row', 
+  alignItems: 'center', 
+  marginBottom: 100,
+},
+profileImageContainer: {
+  width: 200,
+  height: 200,
+  borderRadius: 100,
+  overflow: 'hidden',
+  borderWidth: 5,
+  borderColor: '#9985FF',
+  padding: 10,
+},
+profileImage: {
+  width: '100%',
+  height: '100%',
+},
+arrowButton: {
+  padding: 10,
+},
+arrowIcon: {
+  width: 30,
+  height: 30,
+  resizeMode: 'contain', // adjust this property according to your icon
 },
 
   
