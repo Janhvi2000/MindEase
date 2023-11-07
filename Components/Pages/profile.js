@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, TextInput } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import styles from '../Styles/styles';
 import left from '../Pictures/left.png';
 import right from '../Pictures/right.png';
 
-const profile = ({navigation}) => {
+const Profile = ({ navigation, route }) => {
   const [svgImage, setSvgImage] = useState(null);
   const seedOptions = [
     'Sheba', 'Princess', 'Abby', 'Harley', 'Bob', 'Snickers', 'Daisy', 'Callie', 'Luna', 'Smokey', 'George', 'Peanut', 'Nala', 'Socks', 'Sassy', 'Molly', 'Bailey', 'Garfield', 'Fluffy', 'Loki'
@@ -37,6 +37,13 @@ const profile = ({navigation}) => {
     setSelectedSeedIndex((prevIndex) => (prevIndex - 1 + seedOptions.length) % seedOptions.length);
   };
 
+  const saveProfile = () => {
+    console.log('done'),
+    navigation.navigate('Home', { 
+      svgImage: svgImage, 
+    });
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.container1}>
@@ -52,17 +59,16 @@ const profile = ({navigation}) => {
           <Image source={right} style={styles.arrowIcon} />
         </TouchableOpacity>
       </View>
-      <View style= {styles.bottomContainer}>
-        <TextInput placeholder={'Name'} style={styles.inputfield}/>
-        <TextInput placeholder={'Username'} style={styles.inputfield}/>
-        <TextInput placeholder={'Password'} style={styles.inputfield}/>
-        <TouchableOpacity style={styles.nextButton}>
-          <Text style={styles.nextbuttonText} onPress={() => navigation.navigate('Home')}>Save</Text>
+      <View style={styles.bottomContainer}>
+        <TextInput placeholder={'Name'} style={styles.inputfield} />
+        <TextInput placeholder={'Username'} style={styles.inputfield} />
+        <TextInput placeholder={'Password'} style={styles.inputfield} secureTextEntry={true} />
+        <TouchableOpacity style={styles.nextButton} onPress={saveProfile}>
+          <Text style={styles.nextbuttonText}>Save</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-
-export default profile;
+export default Profile;

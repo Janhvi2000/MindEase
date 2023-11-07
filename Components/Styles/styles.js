@@ -261,8 +261,36 @@ arrowButton: {
 arrowIcon: {
   width: 30,
   height: 30,
-  resizeMode: 'contain', // adjust this property according to your icon
+  resizeMode: 'contain', 
 },
+
+
+
+//styling for home page
+profileImageContainerSmall: {
+  width: 70,
+  height: 70,
+  borderRadius: 35,
+  overflow: 'hidden',
+  borderWidth: 5,
+  borderColor: '#9985FF',
+  padding: 2,
+  marginTop: 20,
+  alignSelf: 'flex-end',
+},
+notif: {
+  overflow: 'hidden',
+  height: 70,
+  alignSelf: 'flex-end',
+},
+bell: {
+  width: 40,
+  height: 40,
+  bottom: 20,
+  marginRight: 20,
+  marginTop: 20,
+},
+
 
   
 });
