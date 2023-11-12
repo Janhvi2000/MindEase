@@ -18,7 +18,7 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="Start Page"
         screenOptions={{
           headerStyle: { backgroundColor: '#9985FF' },
           headerTintColor: '#fff',

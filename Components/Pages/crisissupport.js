@@ -96,7 +96,7 @@ const Crisis = ({ navigation,route }) => {
 
   return (
     <View style={styles.container2}>
-      <View style={{ backgroundColor: '#ffffff', paddingHorizontal: 15 }}>
+      <View style={{ backgroundColor: '#ffffff', paddingHorizontal: 15 , justifyContent: 'center',}}>
         <View style={{ flexDirection: 'row' }}>
           <View style={{ flex: 1 }}></View>
           <TouchableOpacity style={styles.notif} onPress={conso}>

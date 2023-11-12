@@ -95,7 +95,7 @@ const Feedback = ({navigation,route}) => {
                 <Image source={selectedSeedImage} style={styles.profileImage}/> 
               </TouchableOpacity>
             </View>
-            </View>
+          </View>
       <View style={styles.container}>
           <View style={styles.bottomContainer}>
           <Image source={feedback} style={styles.image} />
