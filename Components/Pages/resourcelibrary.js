@@ -74,9 +74,8 @@ const Resource = () => {
                     <ActivityIndicator size="large" color="#9985FF" />
                 </View>
             ) : (
-                <ScrollView horizontal style={styles.container3}>
-                <View style={{ flexDirection: 'row', justifyContent:'center', alignItems: 'center', flex: 1 }}>
-                    <TouchableOpacity onPress={goToPreviousSeed} style={styles.arrowButton}>
+                <View horizontal style={styles.container3}>
+                <TouchableOpacity onPress={goToPreviousSeed} style={styles.arrowButton}>
                         <Image source={left} style={styles.arrowIcon} />
                     </TouchableOpacity>
 
@@ -90,7 +89,6 @@ const Resource = () => {
                         <Image source={right} style={styles.arrowIcon} />
                     </TouchableOpacity>
                 </View>
-                </ScrollView>
                 
             )}
             </View>

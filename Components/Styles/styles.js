@@ -320,6 +320,11 @@ container3: {
   flexDirection: 'row',
   backgroundColor: '#ffffff',
   overflow: 'hidden', 
+  alignSelf: 'center',
+  width: '100%',
+  alignItems: 'center',
+  justifyContent: 'center',
+  overflow: 'scroll',
 },
 
 
