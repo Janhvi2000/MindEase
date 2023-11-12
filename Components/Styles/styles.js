@@ -5,14 +5,11 @@ import { StyleSheet } from 'react-native';
   
     //overall components
     container: {
-      flex: 1,
-      justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: '#ffffff',
       overflow: 'scroll',
-      minHeight: '100%',
+      height: '100%',
       width: '100%',
-      overflow: 'scroll',
     },
     nextbuttonText: {
       fontSize: 20,
@@ -212,8 +209,8 @@ buttonItem: {
   borderColor: '#9985FF',
   borderWidth: 1,
   width: '80%',
-  height: '7%',
-  marginBottom: 20,
+  height: '9%',
+  marginBottom: 10,
 },
 iconTextContainer: {
   flexDirection: 'row',
@@ -271,7 +268,7 @@ arrowIcon: {
 
 
 
-//styling for home page
+//styling for home page,crisis,feedback,resource,progress pages
 profileImageContainerSmall: {
   width: 70,
   height: 70,
@@ -295,6 +292,12 @@ bell: {
   marginRight: 20,
   marginTop: 20,
 },
+container2:{
+  backgroundColor: '#ffffff',
+  overflow: 'scroll',
+  minHeight: '100%',
+  width: '100%',
+}
 
 
   

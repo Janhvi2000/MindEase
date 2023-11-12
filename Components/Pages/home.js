@@ -79,7 +79,7 @@ const Home = ({ navigation, route }) => {
   const selectedSeedImage = imageMapping[selectedSeedName];
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
+    <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false} style={styles.container2}>
       <View style={{ backgroundColor: '#ffffff', paddingHorizontal: 15 }}>
         <View style={{ flexDirection: 'row' }}>
           <View style={{ flex: 1 }}></View>

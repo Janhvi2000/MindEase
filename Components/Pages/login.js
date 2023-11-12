@@ -8,7 +8,6 @@ import styles from '../Styles/styles';
 const Login = ({navigation}) => {
     return (
       <View style={styles.container}>
-          
           <View style= {styles.bottomContainer}>
           <Image source={login} style={styles.image} />
           <TouchableOpacity style={styles.nextButton}>

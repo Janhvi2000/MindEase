@@ -95,7 +95,7 @@ const Crisis = ({ navigation,route }) => {
   const selectedSeedImage = imageMapping[selectedSeedName];
 
   return (
-    <View>
+    <View style={styles.container2}>
       <View style={{ backgroundColor: '#ffffff', paddingHorizontal: 15 }}>
         <View style={{ flexDirection: 'row' }}>
           <View style={{ flex: 1 }}></View>
@@ -107,7 +107,7 @@ const Crisis = ({ navigation,route }) => {
           </TouchableOpacity>
         </View>
         </View>
-    <View style={styles.container}>
+        <View style={styles.container}>
         <Image source={crisis} style={styles.image} />
 
         <TouchableOpacity style={styles.buttonItem} onPress={openDialer}>
