@@ -297,7 +297,30 @@ container2:{
   overflow: 'scroll',
   minHeight: '100%',
   width: '100%',
-}
+},
+
+
+//resource library page
+thumbnail: {
+  width: 120,
+  height: 120,
+  margin: 10,
+  resizeMode: 'contain',
+},
+loaderContainer: {
+  marginTop: '50%',
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '100%',
+  width: '100%',
+},
+container3: {
+  flex: 1,
+  flexDirection: 'row',
+  backgroundColor: '#ffffff',
+  overflow: 'hidden', 
+},
 
 
   
