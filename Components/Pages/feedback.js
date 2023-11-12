@@ -4,12 +4,13 @@ import feedback from '../Pictures/feedback.png';
 import styles from '../Styles/styles';
 
 
-const Feedback = ({navigation}) => {
+const Feedback = ({navigation,route}) => {
     const handleTextChange = (inputText) => {
         setText(inputText);
       };
 
-
+    const { selectedSeedName } = route.params;
+    console.log(selectedSeedName);
     return (
       <View style={styles.container}>
           <View style={styles.bottomContainer}>
@@ -22,7 +23,7 @@ const Feedback = ({navigation}) => {
             numberOfLines={3} 
         />
           <TouchableOpacity style={styles.nextButton}>
-            <Text style={styles.nextbuttonText} onPress={() => navigation.navigate('Home')}>Feedback</Text>
+            <Text style={styles.nextbuttonText} onPress={() => navigation.navigate('Home', { selectedSeedName: selectedSeedName })}>Feedback</Text>
           </TouchableOpacity>
           </View>
       </View>

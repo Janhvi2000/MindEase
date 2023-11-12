@@ -4,30 +4,47 @@ import styles from '../Styles/styles';
 import left from '../Pictures/left.png';
 import right from '../Pictures/right.png';
 
+
+const images = {
+  Callie: require('../Pictures/Callie.png'),
+  Abby: require('../Pictures/Abby.png'),
+  Whiskers: require('../Pictures/Whiskers.png'),
+  Sheba: require('../Pictures/Sheba.png'),
+  Oliver: require('../Pictures/Oliver.png'),
+  Sassy: require('../Pictures/Sassy.png'),
+  Sugar: require('../Pictures/Sugar.png'),
+  Chester: require('../Pictures/Chester.png'),
+  Mimi: require('../Pictures/Mimi.png'),
+  Simba: require('../Pictures/Simba.png'),
+  Leo: require('../Pictures/Leo.png'),
+  Snickers: require('../Pictures/Snickers.png'),
+  Cookie: require('../Pictures/Cookie.png'),
+  Trouble: require('../Pictures/Trouble.png'),
+  Milo: require('../Pictures/Milo.png'),
+  Zoey: require('../Pictures/Zoey.png'),
+  Cuddles: require('../Pictures/Cuddles.png'),
+  Chloe: require('../Pictures/Chloe.png'),
+  Midnight: require('../Pictures/Midnight.png'),
+  Willow: require('../Pictures/Willow.png'),
+  Maggie: require('../Pictures/Maggie.png'),
+  Harley: require('../Pictures/Harley.png'),
+  Samantha: require('../Pictures/Samantha.png'),
+  Coco: require('../Pictures/Coco.png'),
+  Cleo: require('../Pictures/Cleo.png'),
+  Lily: require('../Pictures/Lily.png'),
+  Rascal: require('../Pictures/Rascal.png'),
+  Bandit: require('../Pictures/Bandit.png'),
+  Nala: require('../Pictures/Nala.png'),
+  Tigger: require('../Pictures/Tigger.png'),
+};
+
 const Profile = ({ navigation, route }) => {
-  const [svgImage, setSvgImage] = useState(null);
-  const seedOptions = [
-    'Sheba', 'Princess', 'Abby', 'Harley', 'Bob', 'Snickers', 'Daisy', 'Callie', 'Luna', 'Smokey', 'George', 'Peanut', 'Nala', 'Socks', 'Sassy', 'Molly', 'Bailey', 'Garfield', 'Fluffy', 'Loki'
-  ];
-  const [selectedSeedIndex, setSelectedSeedIndex] = useState(0);
+  const { selectedSeedName } = route.params || { selectedSeedName: 'Sheba' };
 
-  useEffect(() => {
-    const fetchSvg = async (seed) => {
-      try {
-        const response = await fetch(`https://api.dicebear.com/7.x/lorelei/svg/seed=${seed}`);
-        if (response.ok) {
-          const svgData = await response.text();
-          setSvgImage(svgData);
-        } else {
-          console.error('Failed to fetch image');
-        }
-      } catch (error) {
-        console.error('Error fetching image:', error);
-      }
-    };
+  const seedOptions = Object.keys(images);
+  const [selectedSeedIndex, setSelectedSeedIndex] = useState(seedOptions.indexOf(selectedSeedName));
 
-    fetchSvg(seedOptions[selectedSeedIndex]);
-  }, [selectedSeedIndex]);
+  const currentSeed = seedOptions[selectedSeedIndex];
 
   const goToNextSeed = () => {
     setSelectedSeedIndex((prevIndex) => (prevIndex + 1) % seedOptions.length);
@@ -38,10 +55,9 @@ const Profile = ({ navigation, route }) => {
   };
 
   const saveProfile = () => {
-    console.log('done'),
-    navigation.navigate('Home', { 
-      svgImage: svgImage, 
-    });
+    const selectedSeedName = seedOptions[selectedSeedIndex];
+    console.log(selectedSeedName);
+    navigation.navigate('Home', { selectedSeedName: selectedSeedName });
   };
 
   return (
@@ -52,7 +68,7 @@ const Profile = ({ navigation, route }) => {
         </TouchableOpacity>
 
         <View style={styles.profileImageContainer}>
-          {svgImage && <Image source={{ uri: `data:image/svg+xml,${encodeURIComponent(svgImage)}` }} style={styles.profileImage} />}
+          <Image source={images[currentSeed]} style={styles.profileImage} />
         </View>
 
         <TouchableOpacity onPress={goToNextSeed} style={styles.arrowButton}>

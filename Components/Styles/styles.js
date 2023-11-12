@@ -212,7 +212,7 @@ buttonItem: {
   borderColor: '#9985FF',
   borderWidth: 1,
   width: '80%',
-  height: '6%',
+  height: '7%',
   marginBottom: 20,
 },
 iconTextContainer: {
@@ -242,6 +242,7 @@ container1: {
   flexDirection: 'row', 
   alignItems: 'center', 
   marginBottom: 100,
+  marginTop: 50,
 },
 profileImageContainer: {
   width: 200,
@@ -251,10 +252,13 @@ profileImageContainer: {
   borderWidth: 5,
   borderColor: '#9985FF',
   padding: 10,
+  marginTop: 30,
+  position: 'relative',
 },
 profileImage: {
   width: '100%',
   height: '100%',
+  resizeMode: 'contain', 
 },
 arrowButton: {
   padding: 10,

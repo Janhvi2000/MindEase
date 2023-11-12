@@ -1,9 +1,6 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import Test from './Components/Pages/testscreen';
 import Start from './Components/Pages/startpage';
 import Welcome from './Components/Pages/welcome';
@@ -13,6 +10,7 @@ import Signup from './Components/Pages/signup';
 import Login from './Components/Pages/login';
 import Crisis from './Components/Pages/crisissupport';
 import Profile from './Components/Pages/profile';
+import Resource from './Components/Pages/resourcelibrary';
 
 const Stack = createNativeStackNavigator();
 
@@ -61,6 +59,10 @@ function App() {
         <Stack.Screen
           name="Profile"
           component={Profile}
+        />
+        <Stack.Screen
+          name="Resource"
+          component={Resource}
         />
       </Stack.Navigator>
     </NavigationContainer>
