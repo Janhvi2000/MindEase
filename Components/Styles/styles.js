@@ -10,6 +10,7 @@ import { StyleSheet } from 'react-native';
       overflow: 'scroll',
       height: '100%',
       width: '100%',
+      resizeMode: 'contain',
     },
     nextbuttonText: {
       fontSize: 20,
@@ -44,7 +45,7 @@ import { StyleSheet } from 'react-native';
       borderColor: '#9985FF',
       borderWidth: 1,
       width: '80%', 
-      marginBottom: 40,
+      marginBottom: 20,
       alignSelf: 'center',
     },
     bottomContainer: {
@@ -56,6 +57,7 @@ import { StyleSheet } from 'react-native';
       justifyContent: 'center',
       alignItems:'center',
       bottom: 0,
+      resizeMode: 'contain',
     },
     end: {
     justifyContent: 'flex-end',
@@ -70,7 +72,7 @@ import { StyleSheet } from 'react-native';
       marginTop: 20,
       paddingHorizontal: 20,
       width: '100%', 
-      height: '100%',
+      height: '80%',
       marginBottom: 20,
       overflow: 'visible',
     },
@@ -162,7 +164,7 @@ import { StyleSheet } from 'react-native';
   //style for feedback page
   input: { 
     width: '80%',
-    minHeight: '30%',
+    minHeight: '20%',
     borderRadius: 30,
     borderColor: '#9985FF',
     borderWidth: 1,
@@ -186,15 +188,16 @@ import { StyleSheet } from 'react-native';
     borderColor: '#9985FF',
     borderWidth: 1,
     width: '80%', 
-    marginBottom: 20,
+    marginBottom: 10,
     alignSelf: 'center',
-
+    justifyContent: 'center',
   },
 line: {
   borderBottomWidth: 3, 
   borderBottomColor: '#9985FF', 
   width: '80%',
   alignSelf: 'center',
+  justifyContent: 'center',
   marginBottom: 20,
   borderRadius: 100,
 },
@@ -238,7 +241,6 @@ container1: {
   display: 'flex',
   flexDirection: 'row', 
   alignItems: 'center', 
-  marginBottom: 100,
   marginTop: 50,
 },
 profileImageContainer: {
@@ -249,7 +251,7 @@ profileImageContainer: {
   borderWidth: 5,
   borderColor: '#9985FF',
   padding: 10,
-  marginTop: 30,
+  marginVertical: 30,
   position: 'relative',
 },
 profileImage: {
@@ -265,8 +267,13 @@ arrowIcon: {
   height: 30,
   resizeMode: 'contain', 
 },
-
-
+bottomContainer1: {
+  marginTop: 20,
+  width: '100%',
+  height: '100%',
+  minHeight: '5%',
+  alignItems:'center',
+},
 
 //styling for home page,crisis,feedback,resource,progress pages
 profileImageContainerSmall: {
@@ -295,8 +302,10 @@ bell: {
 container2:{
   backgroundColor: '#ffffff',
   overflow: 'scroll',
-  minHeight: '100%',
+  height: '100%',
   width: '100%',
+  paddingBottom: 40,
+  resizeMode: 'contain',
 },
 
 

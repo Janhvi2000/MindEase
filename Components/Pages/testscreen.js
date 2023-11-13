@@ -112,8 +112,6 @@ const Questionnaire = ({navigation}) => {
                 </Text>
               </View>
             ))}
-          </View>
-          <View style= {styles.bottomContainer}>
           <TouchableOpacity onPress={handleNextAndNavigate} style={styles.nextButton}>
               <Text style={styles.nextbuttonText}>Next</Text>
             </TouchableOpacity>
@@ -122,6 +120,7 @@ const Questionnaire = ({navigation}) => {
       </View>
       ) : (
       <View style={styles.questionBox}>
+          <View style= {styles.bottomContainer}>
           <View style={styles.box}>
             <Text style={styles.questionText}>{categories[currentCategory]}</Text>
             <Text style={styles.questionText1}>{getQuestionNumber(currentCategory, currentQuestion)}.{' '}{categoryQuestions[currentCategory][currentQuestion]}</Text>
@@ -139,7 +138,6 @@ const Questionnaire = ({navigation}) => {
                 </TouchableOpacity>
               ))}
             </View>
-          <View style= {styles.bottomContainer}>
           <TouchableOpacity onPress={handleNext} style={styles.nextButton}>
           <Text style={styles.nextbuttonText}>Next</Text>
           </TouchableOpacity>

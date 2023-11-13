@@ -11,6 +11,7 @@ import Login from './Components/Pages/login';
 import Crisis from './Components/Pages/crisissupport';
 import Profile from './Components/Pages/profile';
 import Resource from './Components/Pages/resourcelibrary';
+import About from './Components/Pages/about';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,10 @@ function App() {
         <Stack.Screen
           name="Test"
           component={Test}
+        />
+        <Stack.Screen
+          name="About"
+          component={About}
         />
         <Stack.Screen
           name="Start Page"

@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { View, TextInput, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import feedback from '../Pictures/feedback.png';
+import React from 'react';
+import { View, Text, TouchableOpacity, Linking, StyleSheet, Image } from 'react-native';
 import styles from '../Styles/styles';
 import bell from '../Pictures/bell.png';
-
+import about from '../Pictures/about.png';
 import Callie from '../Pictures/Callie.png'; 
 import Abby from '../Pictures/Abby.png';
 import Whiskers from '../Pictures/Whiskers.png';
@@ -68,13 +67,13 @@ const imageMapping = {
   Tigger: Tigger,
 };
 
+const Login = ({navigation,route}) => {
+  const openLink = () => {
+    const url = 'https://docs.google.com/spreadsheets/d/1_2DimH4D5emAg6uxbWLywIi8Hw5FjfQ8Sl_qxZJV3tQ/edit#gid=0';
+    Linking.openURL(url);
+  };
 
-const Feedback = ({navigation,route}) => {
-    const handleTextChange = (inputText) => {
-        setText(inputText);
-      };
-
-      const { selectedSeedName } = route.params;
+  const { selectedSeedName } = route.params;
       console.log(selectedSeedName);
     
       const conso = () => {
@@ -83,34 +82,27 @@ const Feedback = ({navigation,route}) => {
     
       const selectedSeedImage = imageMapping[selectedSeedName];
     
-      return (
-        <View style={styles.container2}>
-          <View style={{ backgroundColor: '#ffffff', paddingHorizontal: 15 }}>
+
+  return (
+    
+    <View style={styles.container2}>
+        <View style={{ backgroundColor: '#ffffff', paddingHorizontal: 15 }}>
             <View style={{ flexDirection: 'row' }}>
-              <View style={{ flex: 1 }}></View>
-              <TouchableOpacity style={styles.notif} onPress={conso}>
-                <Image source={bell} style={styles.bell} />
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.profileImageContainerSmall} onPress={() => navigation.navigate('Profile', { selectedSeedName })}>
-                <Image source={selectedSeedImage} style={styles.profileImage}/> 
-              </TouchableOpacity>
+                <View style={{ flex: 1 }}></View>
+                    <TouchableOpacity style={styles.notif} onPress={conso}>
+                        <Image source={bell} style={styles.bell} />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.profileImageContainerSmall} onPress={() => navigation.navigate('Profile', { selectedSeedName })}>
+                        <Image source={selectedSeedImage} style={styles.profileImage}/> 
+                    </TouchableOpacity>
+                </View>
             </View>
-          </View>
-      <View style={styles.container}>
-          <Image source={feedback} style={styles.image} />
-          <TextInput
-            style={styles.input}
-            onChangeText={handleTextChange}
-            placeholder="Comments..."
-            multiline={true} 
-            numberOfLines={2} 
-        />
-          <TouchableOpacity style={styles.nextButton}>
-            <Text style={styles.nextbuttonText} onPress={() => navigation.navigate('Home', { selectedSeedName: selectedSeedName })}>Feedback</Text>
-          </TouchableOpacity>
-      </View>
-      </View>
-    );
-  };
-  
-  export default Feedback;
+                <Image source={about} style={styles.image} />
+                <TouchableOpacity style={styles.secondButton} onPress={openLink}>
+                    <Text style={styles.secondbuttonText}>Link to pitch</Text>
+                </TouchableOpacity>
+    </View>
+  );
+};
+
+export default Login;

@@ -91,7 +91,6 @@ const Home = ({ navigation, route }) => {
           </TouchableOpacity>
         </View>
         <View style={styles.container}>
-          <View style={styles.bottomContainer}>
             <Image source={home} style={styles.image} />
             <TouchableOpacity style={styles.secondButton}>
               <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('Crisis', { selectedSeedName })}>Crisis Support</Text>
@@ -105,7 +104,9 @@ const Home = ({ navigation, route }) => {
             <TouchableOpacity style={styles.secondButton}>
               <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('Feedback', { selectedSeedName })}>Feedback</Text>
             </TouchableOpacity>
-          </View>
+            <TouchableOpacity style={styles.secondButton}>
+              <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('About', { selectedSeedName })}>About Page</Text>
+            </TouchableOpacity>
         </View>
       </View>
     </ScrollView>

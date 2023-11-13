@@ -75,7 +75,7 @@ const Profile = ({ navigation, route }) => {
           <Image source={right} style={styles.arrowIcon} />
         </TouchableOpacity>
       </View>
-      <View style={styles.bottomContainer}>
+      <View style={styles.bottomContainer1}>
         <TextInput placeholder={'Name'} style={styles.inputfield} />
         <TextInput placeholder={'Username'} style={styles.inputfield} />
         <TextInput placeholder={'Password'} style={styles.inputfield} secureTextEntry={true} />
