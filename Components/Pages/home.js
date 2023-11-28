@@ -94,6 +94,14 @@ const Home = ({ navigation, route }) => {
     });
   };
 
+  const goToFeedback = () => {
+    navigation.navigate('Feedback', {
+      username: route.params.username,
+      password: route.params.password,
+      profilePic: selectedSeedName,
+    });
+  };
+
   return (
     <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false} style={styles.container2}>
       <View style={{ backgroundColor: '#ffffff', paddingHorizontal: 15 }}>
@@ -115,7 +123,7 @@ const Home = ({ navigation, route }) => {
               <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('Resource', { selectedSeedName })}>Resource Library</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.secondButton}>
-              <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('Feedback', { selectedSeedName })}>Feedback</Text>
+            <Text style={styles.secondbuttonText} onPress={goToFeedback}>Feedback</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.secondButton}>
               <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('About', { selectedSeedName })}>About Page</Text>

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, TextInput, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, TextInput, Text, Image, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, ScrollView, Keyboard } from 'react-native';
 import feedback from '../Pictures/feedback.png';
 import styles from '../Styles/styles';
 import bell from '../Pictures/bell.png';
+import { openDatabase } from 'expo-sqlite';
 
 import Callie from '../Pictures/Callie.png'; 
 import Abby from '../Pictures/Abby.png';
@@ -68,49 +69,84 @@ const imageMapping = {
   Tigger: Tigger,
 };
 
+const db = openDatabase('user.db');
 
-const Feedback = ({navigation,route}) => {
-    const handleTextChange = (inputText) => {
-        setText(inputText);
-      };
+const Feedback = ({ navigation, route }) => {
+  const { username, password, profilePic } = route.params;
+  const [text, setText] = useState('');
 
-      const { selectedSeedName } = route.params;
-      console.log(selectedSeedName);
-    
-      const conso = () => {
-        console.log('Notification pressed');
-      };
-    
-      const selectedSeedImage = imageMapping[selectedSeedName];
-    
-      return (
-        <View style={styles.container2}>
-          <View style={{ backgroundColor: '#ffffff', paddingHorizontal: 15 }}>
-            <View style={{ flexDirection: 'row' }}>
-              <View style={{ flex: 1 }}></View>
-              <TouchableOpacity style={styles.notif} onPress={conso}>
-                <Image source={bell} style={styles.bell} />
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.profileImageContainerSmall} onPress={() => navigation.navigate('Profile', { selectedSeedName })}>
-                <Image source={selectedSeedImage} style={styles.profileImage}/> 
-              </TouchableOpacity>
-            </View>
+  const conso = () => {
+    console.log('Notification pressed');
+  };
+
+  const selectedSeedName = profilePic;
+  const selectedSeedImage = imageMapping[selectedSeedName];
+
+  const handleTextChange = (inputText) => {
+    setText(inputText);
+  };
+
+  const saveFeedback = () => {
+    if (!text) {
+      console.error('Feedback cannot be empty.');
+      return;
+    }
+
+    db.transaction((tx) => {
+      tx.executeSql(
+        'UPDATE users SET feedback = ? WHERE username = ? AND password = ?',
+        [text, username, password],
+        (_, result) => {
+          console.log('Feedback updated successfully');
+          navigation.navigate('Home', { selectedSeedName: selectedSeedName });
+        },
+        (tx, error) => {
+          console.error('Error updating feedback:', error);
+        }
+      );
+    });
+  };
+
+  const dismissKeyboard = () => {
+    Keyboard.dismiss();
+  };
+
+  return (
+    <TouchableWithoutFeedback onPress={dismissKeyboard} accessible={false}>
+      <View style={styles.container2}>
+        <View style={{ backgroundColor: '#ffffff', paddingHorizontal: 15 }}>
+          <View style={{ flexDirection: 'row' }}>
+            <View style={{ flex: 1 }}></View>
+            <TouchableOpacity style={styles.notif} onPress={conso}>
+              <Image source={bell} style={styles.bell} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.profileImageContainerSmall}
+              onPress={() => navigation.navigate('Profile', { selectedSeedName })}
+            >
+              <Image source={selectedSeedImage} style={styles.profileImage} />
+            </TouchableOpacity>
           </View>
-      <View style={styles.container}>
+        </View>
+        <View style={styles.container}>
           <Image source={feedback} style={styles.image} />
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
           <TextInput
             style={styles.input}
             onChangeText={handleTextChange}
             placeholder="Comments..."
-            multiline={true} 
-            numberOfLines={2} 
-        />
-          <TouchableOpacity style={styles.nextButton}>
-            <Text style={styles.nextbuttonText} onPress={() => navigation.navigate('Home', { selectedSeedName: selectedSeedName })}>Feedback</Text>
+            multiline={true}
+            numberOfLines={2}
+            onSubmitEditing={Keyboard.dismiss}
+          />
+          </TouchableWithoutFeedback>
+          <TouchableOpacity style={styles.nextButton} onPress={saveFeedback}>
+            <Text style={styles.nextbuttonText}>Save Feedback</Text>
           </TouchableOpacity>
+        </View>
       </View>
-      </View>
-    );
-  };
-  
-  export default Feedback;
+    </TouchableWithoutFeedback>
+  );
+};
+
+export default Feedback;

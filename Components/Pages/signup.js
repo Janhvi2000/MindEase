@@ -17,14 +17,14 @@ const Signup = ({ navigation }) => {
       console.error('Username and password must be defined.');
       return;
     }
-
+  
     db.transaction((tx) => {
       tx.executeSql(
-        'CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, fullName TEXT, email TEXT, username TEXT, password TEXT);'
+        'CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, fullName TEXT, email TEXT, username TEXT, password TEXT, profilePic TEXT, feedback TEXT);'
       );
       tx.executeSql(
-        'INSERT INTO users (fullName, email, username, password) VALUES (?, ?, ?, ?)',
-        [fullName, email, username, password],
+        'INSERT INTO users (fullName, email, username, password, profilePic, feedback) VALUES (?, ?, ?, ?, ?, ?)',
+        [fullName, email, username, password, 'Sheba', ''],
         (_, { insertId, rows }) => {
           console.log('User inserted with ID:', insertId);
         },
@@ -34,7 +34,7 @@ const Signup = ({ navigation }) => {
       );
     });
   };
-
+  
   return (
     <View style={styles.container}>
       <View style={styles.bottomContainer}>
