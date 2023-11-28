@@ -1,29 +1,81 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, TextInput } from 'react-native';
-import sign from '../Pictures/Signup.png';
+import React, { useState } from 'react';
+import { View, Text, Image, TouchableOpacity, TextInput } from 'react-native';
+import { openDatabase } from 'expo-sqlite';
 import styles from '../Styles/styles';
+import sign from '../Pictures/Signup.png';
 
+const db = openDatabase('user.db');
 
+const Signup = ({ navigation }) => {
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-const Signup = ({navigation}) => {
-    return (
-      <View style={styles.container}>
-          <View style= {styles.bottomContainer}>
-            <Image source={sign} style={styles.image} />
-            <TouchableOpacity style={styles.nextButton}>
-                <Text style={styles.nextbuttonText} onPress={() => navigation.navigate('Home')}>Register with Google</Text>
-            </TouchableOpacity>
-            <View style={styles.line}/>
-            <TextInput placeholder={'Full Name'} style={styles.inputfield}/>
-            <TextInput placeholder={'Email'} style={styles.inputfield}/>
-            <TextInput placeholder={'Username'} style={styles.inputfield}/>
-            <TextInput placeholder={'Password'} style={styles.inputfield}/>
-            <TouchableOpacity style={styles.nextButton}>
-            <Text style={styles.nextbuttonText} onPress={() => navigation.navigate('Test')}>Register</Text>
-            </TouchableOpacity>
-        </View>
-      </View>
-    );
+  const createUser = () => {
+    if (!username || !password) {
+      console.error('Username and password must be defined.');
+      return;
+    }
+
+    db.transaction((tx) => {
+      tx.executeSql(
+        'CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, fullName TEXT, email TEXT, username TEXT, password TEXT);'
+      );
+      tx.executeSql(
+        'INSERT INTO users (fullName, email, username, password) VALUES (?, ?, ?, ?)',
+        [fullName, email, username, password],
+        (_, { insertId, rows }) => {
+          console.log('User inserted with ID:', insertId);
+        },
+        (tx, error) => {
+          console.error('Error inserting user data:', error);
+        }
+      );
+    });
   };
-  
-  export default Signup;
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.bottomContainer}>
+        <Image source={sign} style={styles.image} />
+        <TextInput
+          placeholder={'Full Name'}
+          style={styles.inputfield}
+          onChangeText={(text) => setFullName(text)}
+        />
+        <TextInput
+          placeholder={'Email'}
+          style={styles.inputfield}
+          onChangeText={(text) => setEmail(text)}
+        />
+        <TextInput
+          placeholder={'Username'}
+          style={styles.inputfield}
+          onChangeText={(text) => setUsername(text)}
+        />
+        <TextInput
+          placeholder={'Password'}
+          style={styles.inputfield}
+          onChangeText={(text) => setPassword(text)}
+          secureTextEntry={true}
+        />
+        <TouchableOpacity
+          style={styles.nextButton}
+          onPress={() => {
+            createUser();
+            navigation.navigate('Test', {
+              username,
+              password,
+              profilePic: 'Sheba',
+            });
+          }}
+        >
+          <Text style={styles.nextbuttonText}>Register</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
+export default Signup;

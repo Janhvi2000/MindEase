@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import styles from '../Styles/styles';
 import home from '../Pictures/home.png';
 import bell from '../Pictures/bell.png';
+import { openDatabase } from 'expo-sqlite';
 
 import Callie from '../Pictures/Callie.png'; 
 import Abby from '../Pictures/Abby.png';
@@ -68,15 +69,30 @@ const imageMapping = {
   Tigger: Tigger,
 };
 
+const db = openDatabase('user.db'); 
+
 const Home = ({ navigation, route }) => {
-  const { selectedSeedName } = route.params || { selectedSeedName: 'Sheba' };
+
+  const { username, password, profilePic } = route.params;
+  console.log('Username:', username);
+  console.log('Password:', password);
+  console.log('Pic:', profilePic);
+
+  const selectedSeedName = profilePic;
+  const selectedSeedImage = imageMapping[selectedSeedName];
   console.log(selectedSeedName);
 
   const conso = () => {
     console.log('Notification pressed');
   };
 
-  const selectedSeedImage = imageMapping[selectedSeedName];
+  const goToProfile = () => {
+    navigation.navigate('Profile', {
+      username: route.params.username,
+      password: route.params.password,
+      profilePic: selectedSeedName,
+    });
+  };
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false} style={styles.container2}>
@@ -86,7 +102,7 @@ const Home = ({ navigation, route }) => {
           <TouchableOpacity style={styles.notif} onPress={conso}>
             <Image source={bell} style={styles.bell} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.profileImageContainerSmall} onPress={() => navigation.navigate('Profile', { selectedSeedName })}>
+          <TouchableOpacity style={styles.profileImageContainerSmall} onPress={goToProfile}>
             <Image source={selectedSeedImage} style={styles.profileImage}/> 
           </TouchableOpacity>
         </View>
@@ -94,9 +110,6 @@ const Home = ({ navigation, route }) => {
             <Image source={home} style={styles.image} />
             <TouchableOpacity style={styles.secondButton}>
               <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('Crisis', { selectedSeedName })}>Crisis Support</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.secondButton}>
-              <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('Profile', { selectedSeedName })}>Personal Progress</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.secondButton}>
               <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('Resource', { selectedSeedName })}>Resource Library</Text>

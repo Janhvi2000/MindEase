@@ -35,7 +35,8 @@ const categories = ['Personal Characteristics & Traits', 'Emotional Intelligence
 
 const options = ['1', '2', '3', '4', '5']; // Radio button labels
 
-const Questionnaire = ({navigation}) => {
+const Questionnaire = ({navigation, route}) => {
+  const { username, password, profilePic } = route.params;
   const [currentCategory, setCurrentCategory] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState(Array(category1.length + category2.length + category3.length).fill('Not answered'));
@@ -74,7 +75,11 @@ const Questionnaire = ({navigation}) => {
   }, [currentQuestion, currentCategory]);
 
   const handleNextAndNavigate = () => {
-    navigation.navigate('Home');
+    navigation.navigate('Home', {
+      username: route.params.username,
+      password: route.params.password,
+      profilePic: route.params.profilePic,
+    });
   };
 
 

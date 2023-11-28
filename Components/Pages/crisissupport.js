@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { Linking } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Linking } from 'react-native';
 import crisis from '../Pictures/crisis.png';
 import call from '../Pictures/call.png';
 import text from '../Pictures/text.png';

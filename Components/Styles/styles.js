@@ -311,10 +311,12 @@ container2:{
 
 //resource library page
 thumbnail: {
-  width: 120,
-  height: 120,
-  margin: 10,
+  flex: 1,
+  width: '100%',
+  height: '100%',
   resizeMode: 'contain',
+  margin: 10,
+  padding:10,
 },
 loaderContainer: {
   marginTop: '50%',
@@ -331,13 +333,25 @@ container3: {
   overflow: 'hidden', 
   alignSelf: 'center',
   width: '100%',
-  alignItems: 'center',
-  justifyContent: 'center',
   overflow: 'scroll',
 },
-
-
-  
+thumbnailContainer: {
+  flex: 1,
+  width: '100%',
+  height: '100%',
+},
+container4: {
+  flex: 1,
+  backgroundColor: '#fff',
+  alignItems: 'center',
+  justifyContent: 'center',
+},
+image1: {
+  flex: 1,
+  width: '50%',
+  resizeMode: 'contain',
+  marginVertical: 10,
+},
 });
   
   export default styles;
