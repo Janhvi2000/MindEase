@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View, Image, StyleSheet, TouchableOpacity, ScrollView, Linking, ActivityIndicator } from 'react-native';
-import * as VideoThumbnails from 'expo-video-thumbnails';  // Import the expo-video-thumbnails module
-
+import { View, StyleSheet, TouchableOpacity, ScrollView, Linking, ActivityIndicator } from 'react-native';
+import { Image } from 'expo-image';
 import styles from '../Styles/styles';
 import left from '../Pictures/left.png';
 import right from '../Pictures/right.png';
@@ -72,100 +71,77 @@ const imageMapping = {
 };
 
 const Resource = ({ navigation, route }) => {
-  const { selectedSeedName } = route.params;
-  console.log(selectedSeedName);
+  const [selectedSeedIndex, setSelectedSeedIndex] = useState(0);
+  const { selectedSeedName } = route.params || { selectedSeedName: 'Sheba' };
+  const selectedSeedImage = imageMapping[selectedSeedName];
+  const videoIds = ["2diE_SuSQAw", "pes7H4ECTdw", "RPyzPH8sB2A", "aOGP3mltnZE", "MGdgUP8XLwc", "hEfCxEdDtGU", "0Yr4hyFSJPk", "xQ2XroDdSAs", "W14E1nUY95U", "4DzFFVZPCw4", "gHf-L0uXffU", "BOWMIsUUfCA"];
 
   const conso = () => {
     console.log('Notification pressed');
   };
 
-  const selectedSeedImage = imageMapping[selectedSeedName];
-
-  const [thumbnails, setThumbnails] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [playlistIds, setPlaylistIds] = useState(['PLiUrrIiqidTVOFopSNaKy6ieGbmuhkxQw', /* ... other playlistIds */]);
-  const [selectedSeedIndex, setSelectedSeedIndex] = useState(0);
-  const apiKey = 'AIzaSyC0ncixno6iS_g7ilMKPTiZ4MtIGdp90ww';
-
-  useEffect(() => {
-    const getThumbnails = async () => {
-      try {
-        const allThumbnails = [];
-
-        const currentPlaylistId = playlistIds[selectedSeedIndex];
-        const response = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=2&playlistId=${currentPlaylistId}&key=${apiKey}`);
-        const data = await response.json();
-
-        if (data && data.items) {
-          const videoIds = data.items.map(item => item.snippet.resourceId.videoId);
-
-          for (const videoId of videoIds) {
-            // Use expo-video-thumbnails to generate thumbnails
-            const { uri } = await VideoThumbnails.getThumbnailAsync(`https://www.youtube.com/watch?v=${videoId}`);
-
-            allThumbnails.push(uri);
-          }
-        } else {
-          console.error('No items found in the response:', data);
-        }
-
-        setThumbnails(allThumbnails);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        setLoading(false);
-      }
-    };
-
-    getThumbnails();
-  }, [playlistIds, selectedSeedIndex]);
+  const openLink = (videoId) => {
+    const youtubeLink = `https://www.youtube.com/watch?v=${videoId}`;
+    Linking.openURL(youtubeLink).catch((err) =>
+      console.error('Error opening YouTube link:', err)
+    );
+  };
 
   const goToNextSeed = () => {
-    setSelectedSeedIndex(prevIndex => (prevIndex + 1) % playlistIds.length);
+    setSelectedSeedIndex((prevIndex) => (prevIndex + 1) % playlistIds.length);
   };
 
   const goToPreviousSeed = () => {
-    setSelectedSeedIndex(prevIndex => (prevIndex - 1 + playlistIds.length) % playlistIds.length);
+    setSelectedSeedIndex(
+      (prevIndex) => (prevIndex - 1 + playlistIds.length) % playlistIds.length
+    );
   };
 
   return (
     <View>
-      {loading ? (
-        <View style={styles.loaderContainer}>
-          <ActivityIndicator size="large" color="#9985FF" />
+      <View style={{ backgroundColor: '#ffffff', paddingHorizontal: 15 }}>
+        <View style={{ flexDirection: 'row' }}>
+          <View style={{ flex: 1 }}></View>
+          <TouchableOpacity style={styles.notif} onPress={conso}>
+            <Image source={bell} style={styles.bell} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.profileImageContainerSmall}
+            onPress={() =>
+              navigation.navigate('Profile', { selectedSeedName })
+            }
+          >
+            <Image source={selectedSeedImage} style={styles.profileImage} />
+          </TouchableOpacity>
         </View>
-      ) : (
-        <View>
-          <View style={{ backgroundColor: '#ffffff', paddingHorizontal: 15 }}>
-            <View style={{ flexDirection: 'row' }}>
-              <View style={{ flex: 1 }}></View>
-              <TouchableOpacity style={styles.notif} onPress={conso}>
-                <Image source={bell} style={styles.bell} />
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.profileImageContainerSmall} onPress={() => navigation.navigate('Profile', { selectedSeedName })}>
-                <Image source={selectedSeedImage} style={styles.profileImage}/> 
-              </TouchableOpacity>
-            </View>
-          </View>
-          <View horizontal style={styles.container3}>
-            <TouchableOpacity onPress={goToPreviousSeed} style={styles.arrowButton}>
-              <Image source={left} style={styles.arrowIcon} />
-            </TouchableOpacity>
+      </View>
+      <ScrollView horizontal style={styles.container3}>
+        <TouchableOpacity onPress={goToPreviousSeed} style={styles.arrowButton}>
+          <Image source={left} style={styles.arrowIcon} />
+        </TouchableOpacity>
 
-            {thumbnails.map((thumbnail, index) => (
-              <TouchableOpacity key={index}>
-                <Image source={{ uri: thumbnail }} style={styles.thumbnail} />
-              </TouchableOpacity>
-            ))}
-
-            <TouchableOpacity onPress={goToNextSeed} style={styles.arrowButton}>
-              <Image source={right} style={styles.arrowIcon} />
+        <View style={styles.container4}>
+          {videoIds.map((videoId, index) => (
+            <TouchableOpacity
+              key={index}
+              style={styles.image1}
+              onPress={() => openLink(videoId)}
+            >
+              <Image
+                style={styles.image}
+                source={{ uri: `https://img.youtube.com/vi/${videoId}/0.jpg` }}
+                placeholder='image'
+                transition={1000}
+              />
             </TouchableOpacity>
-          </View>
+          ))}
         </View>
-      )}
+
+        <TouchableOpacity onPress={goToNextSeed} style={styles.arrowButton}>
+          <Image source={right} style={styles.arrowIcon} />
+        </TouchableOpacity>
+      </ScrollView>
     </View>
-  );
-};
+)};
 
 export default Resource;
