@@ -68,39 +68,44 @@ const imageMapping = {
 };
 
 const Login = ({navigation,route}) => {
+  const { username, password, profilePic } = route.params;
+  const selectedSeedName = profilePic;
+  const selectedSeedImage = imageMapping[selectedSeedName];
+
   const openLink = () => {
     const url = 'https://docs.google.com/spreadsheets/d/1_2DimH4D5emAg6uxbWLywIi8Hw5FjfQ8Sl_qxZJV3tQ/edit#gid=0';
     Linking.openURL(url);
   };
-
-  const { selectedSeedName } = route.params;
-      console.log(selectedSeedName);
     
-      const conso = () => {
-        console.log('Notification pressed');
-      };
+  const conso = () => {
+    console.log('Notification pressed');
+  };
     
-      const selectedSeedImage = imageMapping[selectedSeedName];
-    
+  const goToProfile = () => {
+    navigation.navigate('Profile', {
+      username: route.params.username,
+      password: route.params.password,
+      profilePic: selectedSeedName,
+    });
+  }; 
 
   return (
-    
     <View style={styles.container2}>
         <View style={{ backgroundColor: '#ffffff', paddingHorizontal: 15 }}>
-            <View style={{ flexDirection: 'row' }}>
-                <View style={{ flex: 1 }}></View>
-                    <TouchableOpacity style={styles.notif} onPress={conso}>
-                        <Image source={bell} style={styles.bell} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.profileImageContainerSmall} onPress={() => navigation.navigate('Profile', { selectedSeedName })}>
-                        <Image source={selectedSeedImage} style={styles.profileImage}/> 
-                    </TouchableOpacity>
-                </View>
-            </View>
-                <Image source={about} style={styles.image} />
-                <TouchableOpacity style={styles.secondButton} onPress={openLink}>
-                    <Text style={styles.secondbuttonText}>Link to pitch</Text>
-                </TouchableOpacity>
+        <View style={{ flexDirection: 'row' }}>
+            <View style={{ flex: 1 }}></View>
+            <TouchableOpacity style={styles.notif} onPress={conso}>
+              <Image source={bell} style={styles.bell} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.profileImageContainerSmall} onPress={goToProfile}>
+              <Image source={selectedSeedImage} style={styles.profileImage}/> 
+            </TouchableOpacity>
+          </View>
+        </View>
+        <Image source={about} style={styles.image} />
+        <TouchableOpacity style={styles.secondButton} onPress={openLink}>
+            <Text style={styles.secondbuttonText}>Link to pitch</Text>
+        </TouchableOpacity>
     </View>
   );
 };
