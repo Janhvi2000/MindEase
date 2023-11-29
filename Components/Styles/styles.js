@@ -261,6 +261,8 @@ profileImage: {
 },
 arrowButton: {
   padding: 10,
+  alignItems: 'center',
+  justifyContent: 'center',
 },
 arrowIcon: {
   width: 30,
@@ -293,11 +295,12 @@ notif: {
   alignSelf: 'flex-end',
 },
 bell: {
-  width: 40,
-  height: 40,
+  width: 35,
+  height: 30,
   bottom: 20,
   marginRight: 20,
   marginTop: 20,
+  resizeMode: 'contain',
 },
 container2:{
   backgroundColor: '#ffffff',
@@ -310,48 +313,32 @@ container2:{
 
 
 //resource library page
-thumbnail: {
-  flex: 1,
-  width: '100%',
-  height: '100%',
-  resizeMode: 'contain',
-  margin: 10,
-  padding:10,
-},
-loaderContainer: {
-  marginTop: '50%',
-  flex: 1,
-  justifyContent: 'center',
-  alignItems: 'center',
-  height: '100%',
-  width: '100%',
-},
-container3: {
-  flex: 1,
-  flexDirection: 'row',
-  backgroundColor: '#ffffff',
-  overflow: 'hidden', 
-  alignSelf: 'center',
-  width: '100%',
-  overflow: 'scroll',
-},
-thumbnailContainer: {
-  flex: 1,
-  width: '100%',
-  height: '100%',
-},
 container4: {
   flex: 1,
-  backgroundColor: '#fff',
-  alignItems: 'center',
-  justifyContent: 'center',
+  backgroundColor: '#ffffff',
+},
+container5: {
+  justifyContent: 'center', 
+  flexDirection: 'row',
+  width: '100%',
+  padding: 10,
+},
+imageContainer: {
+  marginHorizontal: 10,
 },
 image1: {
-  flex: 1,
-  width: '50%',
+  height: 100,
+  width: 120,
   resizeMode: 'contain',
-  marginVertical: 10,
 },
+text1: {
+  marginTop: 10,
+  fontWeight: 'bold',
+  fontSize: 30,
+  paddingHorizontal: 15,
+  color: '#9985FF',
+}
+
 });
   
   export default styles;

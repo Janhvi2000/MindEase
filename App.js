@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Notifications } from 'expo-notifications';
+import * as Permissions from 'expo-permissions';
 import Test from './Components/Pages/testscreen';
 import Start from './Components/Pages/startpage';
 import Welcome from './Components/Pages/welcome';
@@ -16,6 +18,7 @@ import About from './Components/Pages/about';
 const Stack = createNativeStackNavigator();
 
 function App() {
+
   return (
     <NavigationContainer>
       <Stack.Navigator

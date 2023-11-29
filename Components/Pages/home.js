@@ -74,13 +74,9 @@ const db = openDatabase('user.db');
 const Home = ({ navigation, route }) => {
 
   const { username, password, profilePic } = route.params;
-  console.log('Username:', username);
-  console.log('Password:', password);
-  console.log('Pic:', profilePic);
 
   const selectedSeedName = profilePic;
   const selectedSeedImage = imageMapping[selectedSeedName];
-  console.log(selectedSeedName);
 
   const conso = () => {
     console.log('Notification pressed');
@@ -102,6 +98,30 @@ const Home = ({ navigation, route }) => {
     });
   };
 
+  const goToCrisis = () => {
+    navigation.navigate('Crisis', {
+      username: route.params.username,
+      password: route.params.password,
+      profilePic: selectedSeedName,
+    });
+  };
+
+  const goToResource = () => {
+    navigation.navigate('Resource', {
+      username: route.params.username,
+      password: route.params.password,
+      profilePic: selectedSeedName,
+    });
+  };
+
+  const goToAbout = () => {
+    navigation.navigate('About', {
+      username: route.params.username,
+      password: route.params.password,
+      profilePic: selectedSeedName,
+    });
+  };
+
   return (
     <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false} style={styles.container2}>
       <View style={{ backgroundColor: '#ffffff', paddingHorizontal: 15 }}>
@@ -117,16 +137,16 @@ const Home = ({ navigation, route }) => {
         <View style={styles.container}>
             <Image source={home} style={styles.image} />
             <TouchableOpacity style={styles.secondButton}>
-              <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('Crisis', { selectedSeedName })}>Crisis Support</Text>
+              <Text style={styles.secondbuttonText} onPress={goToCrisis}>Crisis Support</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.secondButton}>
-              <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('Resource', { selectedSeedName })}>Resource Library</Text>
+              <Text style={styles.secondbuttonText} onPress={goToResource}>Resource Library</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.secondButton}>
-            <Text style={styles.secondbuttonText} onPress={goToFeedback}>Feedback</Text>
+              <Text style={styles.secondbuttonText} onPress={goToFeedback}>Feedback</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.secondButton}>
-              <Text style={styles.secondbuttonText} onPress={() => navigation.navigate('About', { selectedSeedName })}>About Page</Text>
+              <Text style={styles.secondbuttonText} onPress={goToAbout}>About Page</Text>
             </TouchableOpacity>
         </View>
       </View>

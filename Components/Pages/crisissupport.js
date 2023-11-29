@@ -72,6 +72,10 @@ const imageMapping = {
 };
 
 const Crisis = ({ navigation,route }) => {
+  const { username, password, profilePic } = route.params;
+  const selectedSeedName = profilePic;
+  const selectedSeedImage = imageMapping[selectedSeedName];
+
   const phoneNumber = '1234567890';
 
   const openDialer = () => {
@@ -84,27 +88,30 @@ const Crisis = ({ navigation,route }) => {
     Linking.openURL(`sms:${phoneNumber}`);
   };
 
-  const { selectedSeedName } = route.params;
-  console.log(selectedSeedName);
-
   const conso = () => {
     console.log('Notification pressed');
   };
 
-  const selectedSeedImage = imageMapping[selectedSeedName];
+  const goToProfile = () => {
+    navigation.navigate('Profile', {
+      username: route.params.username,
+      password: route.params.password,
+      profilePic: selectedSeedName,
+    });
+  };
 
   return (
-    <View style={styles.container2}>
-      <View style={{ backgroundColor: '#ffffff', paddingHorizontal: 15 , justifyContent: 'center',}}>
-        <View style={{ flexDirection: 'row' }}>
-          <View style={{ flex: 1 }}></View>
-          <TouchableOpacity style={styles.notif} onPress={conso}>
-            <Image source={bell} style={styles.bell} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.profileImageContainerSmall} onPress={() => navigation.navigate('Profile', { selectedSeedName })}>
-            <Image source={selectedSeedImage} style={styles.profileImage}/> 
-          </TouchableOpacity>
-        </View>
+      <View style={styles.container2}>
+        <View style={{ backgroundColor: '#ffffff', paddingHorizontal: 15 , justifyContent: 'center',}}>
+          <View style={{ flexDirection: 'row' }}>
+            <View style={{ flex: 1 }}></View>
+            <TouchableOpacity style={styles.notif} onPress={conso}>
+              <Image source={bell} style={styles.bell} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.profileImageContainerSmall} onPress={goToProfile}>
+              <Image source={selectedSeedImage} style={styles.profileImage}/> 
+            </TouchableOpacity>
+          </View>
         </View>
         <View style={styles.container}>
         <Image source={crisis} style={styles.image} />
@@ -130,7 +137,7 @@ const Crisis = ({ navigation,route }) => {
             <Text style={styles.secondbuttonText1}>Chat</Text>
         </View>
         </TouchableOpacity>
-    </View>
+      </View>
     </View>
   );
 };

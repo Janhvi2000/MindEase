@@ -73,14 +73,14 @@ const db = openDatabase('user.db');
 
 const Feedback = ({ navigation, route }) => {
   const { username, password, profilePic } = route.params;
+  const selectedSeedName = profilePic;
+  const selectedSeedImage = imageMapping[selectedSeedName];
+
   const [text, setText] = useState('');
 
   const conso = () => {
     console.log('Notification pressed');
   };
-
-  const selectedSeedName = profilePic;
-  const selectedSeedImage = imageMapping[selectedSeedName];
 
   const handleTextChange = (inputText) => {
     setText(inputText);
@@ -111,6 +111,14 @@ const Feedback = ({ navigation, route }) => {
     Keyboard.dismiss();
   };
 
+  const goToProfile = () => {
+    navigation.navigate('Profile', {
+      username: route.params.username,
+      password: route.params.password,
+      profilePic: selectedSeedName,
+    });
+  };
+
   return (
     <TouchableWithoutFeedback onPress={dismissKeyboard} accessible={false}>
       <View style={styles.container2}>
@@ -120,11 +128,8 @@ const Feedback = ({ navigation, route }) => {
             <TouchableOpacity style={styles.notif} onPress={conso}>
               <Image source={bell} style={styles.bell} />
             </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.profileImageContainerSmall}
-              onPress={() => navigation.navigate('Profile', { selectedSeedName })}
-            >
-              <Image source={selectedSeedImage} style={styles.profileImage} />
+            <TouchableOpacity style={styles.profileImageContainerSmall} onPress={goToProfile}>
+              <Image source={selectedSeedImage} style={styles.profileImage}/> 
             </TouchableOpacity>
           </View>
         </View>
