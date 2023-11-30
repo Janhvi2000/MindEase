@@ -21,9 +21,7 @@ def dialogflow_webhook():
     return jsonify({'fulfillment_text': fulfillment_text})
 
 def detect_intent(project_id, session_id, text, language_code):
-    credentials = service_account.Credentials.from_service_account_file(
-        './credentials.json'
-    )
+    credentials = service_account.Credentials.from_service_account_file('credentials.json')
 
     session_client = dialogflow.SessionsClient(credentials=credentials)
     session = session_client.session_path(project_id, session_id)
