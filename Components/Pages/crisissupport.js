@@ -100,6 +100,14 @@ const Crisis = ({ navigation,route }) => {
     });
   };
 
+  const goToChatBot = () => {
+    navigation.navigate('ChatBot', {
+      username: route.params.username,
+      password: route.params.password,
+      profilePic: selectedSeedName,
+    });
+  };
+
   return (
       <View style={styles.container2}>
         <View style={{ backgroundColor: '#ffffff', paddingHorizontal: 15 , justifyContent: 'center',}}>
@@ -131,7 +139,7 @@ const Crisis = ({ navigation,route }) => {
         </View>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.buttonItem} onPress={openMessagesApp}>
+        <TouchableOpacity style={styles.buttonItem} onPress={goToChatBot}>
         <View style={styles.iconTextContainer}>
             <Image source={chat} style={styles.img} />
             <Text style={styles.secondbuttonText1}>Chat</Text>

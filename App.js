@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Notifications } from 'expo-notifications';
-import * as Permissions from 'expo-permissions';
 import Test from './Components/Pages/testscreen';
 import Start from './Components/Pages/startpage';
 import Welcome from './Components/Pages/welcome';
@@ -14,6 +12,7 @@ import Crisis from './Components/Pages/crisissupport';
 import Profile from './Components/Pages/profile';
 import Resource from './Components/Pages/resourcelibrary';
 import About from './Components/Pages/about';
+import ChatBot from './Components/Pages/chatbot';
 
 const Stack = createNativeStackNavigator();
 
@@ -71,6 +70,10 @@ function App() {
         <Stack.Screen
           name="Resource"
           component={Resource}
+        />
+        <Stack.Screen
+          name="ChatBot"
+          component={ChatBot}
         />
       </Stack.Navigator>
     </NavigationContainer>

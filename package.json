@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
+    "start": "concurrently \"npm run start-expo\" \"npm run start-flask\"",
+    "start-expo": "expo start",
+    "start-flask": "cd assets/backend && flask run --host=0.0.0.0",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web"
@@ -17,10 +19,10 @@
     "axios": "^1.6.0",
     "expo": "~49.0.15",
     "expo-asset": "~8.10.1",
-    "expo-file-system": "~15.4.4",
+    "expo-file-system": "~15.4.5",
     "expo-image": "~1.3.5",
     "expo-notifications": "~0.20.1",
-    "expo-permissions": "^14.4.0",
+    "expo-permissions": "~14.2.1",
     "expo-random": "~13.2.0",
     "expo-sqlite": "~11.3.3",
     "expo-status-bar": "~1.6.0",
@@ -38,7 +40,22 @@
     "react-native-web": "~0.19.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "concurrently": "^8.2.2"
   },
-  "private": true
+  "private": true,
+  "description": "Therapy App",
+  "author": "Janhvi Guha",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Janhvi2000/MindEase.git"
+  },
+  "keywords": [
+    "Therapy"
+  ],
+  "bugs": {
+    "url": "https://github.com/Janhvi2000/MindEase/issues"
+  },
+  "homepage": "https://github.com/Janhvi2000/MindEase#readme"
 }
