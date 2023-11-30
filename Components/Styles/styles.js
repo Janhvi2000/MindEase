@@ -339,6 +339,79 @@ text1: {
   color: '#9985FF',
 }
 
+//chatbot styling
+container7: {
+  flex: 1,
+  justifyContent: 'flex-end',
+},
+chatContainer: {
+  flex: 1,
+  padding: 5,
+  paddingTop: 20,
+},
+chatContentContainer: {
+  paddingBottom: 40, // Adjusted to allow space for padding after the last message
+},
+userMessageContainer: {
+  flexDirection: 'row',
+  justifyContent: 'flex-end',
+  alignItems: 'center',
+  marginBottom: 5,
+},
+botMessageContainer: {
+  flexDirection: 'row',
+  justifyContent: 'flex-start',
+  alignItems: 'center',
+  marginBottom: 5,
+},
+userMessage: {
+  backgroundColor: '#9985FF',
+  padding: 10,
+  borderRadius: 8,
+  maxWidth: '80%',
+  alignSelf: 'flex-end',
+  marginBottom: 8,
+},
+botMessage: {
+  backgroundColor: '#d9d9d9',
+  padding: 8,
+  borderRadius: 8,
+  maxWidth: '80%',
+  alignSelf: 'flex-start',
+  marginBottom: 8,
+},
+iconContainer: {
+  marginRight: 8,
+  marginLeft: 8,
+  marginBottom: 8,
+  width: 32,
+  height: 32,
+},
+icon1: {
+  width: 40,
+  height: 40,
+  borderRadius: 20,
+  borderWidth: 1,
+  borderColor: '#9985FF',
+  resizeMode: 'contain',
+},
+inputContainer: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  padding: 16,
+  borderTopWidth: 1,
+  borderTopColor: '#ccc',
+},
+input1: {
+  flex: 1,
+  marginRight: 8,
+  padding: 8,
+  borderWidth: 1,
+  borderColor: '#ccc',
+  borderRadius: 8,
+},
+
 });
   
   export default styles;
