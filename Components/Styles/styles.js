@@ -337,7 +337,7 @@ text1: {
   fontSize: 30,
   paddingHorizontal: 15,
   color: '#9985FF',
-}
+},
 
 //chatbot styling
 container7: {
@@ -414,4 +414,4 @@ input1: {
 
 });
   
-  export default styles;
+export default styles;
