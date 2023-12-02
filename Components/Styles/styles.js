@@ -488,10 +488,10 @@ thoughts: {
   marginTop: 8,
 },
 bottomContainer2: {
-  marginTop: 20,
+  marginTop: 10,
   marginBottom: 10,
   width: '100%',
-  height: 470,
+  height: 480,
   resizeMode: 'contain',
   position: 'relative',
 },
@@ -508,12 +508,12 @@ cardButtonsContainer: {
 },
 
 editButton: {
-  marginRight: 10,
+  marginRight: 6,
 },
 editIcon: {
   width: 30,
   height: 30,
-  borderRadius: 20,
+  borderRadius: 15,
   borderWidth: 1,
   borderColor: '#9985FF',
   resizeMode: 'contain',
