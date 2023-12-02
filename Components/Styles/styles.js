@@ -433,13 +433,13 @@ input3: {
   width: '90%',
   borderColor: '#9985FF',
   borderWidth: 1,
-  paddingHorizontal: 8,
   borderRadius: 10,
   marginHorizontal: 20,
   marginBottom: 10, 
   justifyContent: 'center',
   color: 'black',
   padding: 15,
+  backgroundColor: 'white',
 },
 input2: {
   borderColor: '#9985FF',
@@ -449,18 +449,11 @@ input2: {
   borderRadius: 10,
   marginHorizontal: 20,
   marginBottom: 10, 
+  height: '40%',
+  textAlignVertical: 'top',
 },
 dropDownContainer: {
-  height: '200%',
-  width: '90%',
-  borderColor: '#9985FF',
-  borderWidth: 1,
-  paddingHorizontal: 8,
-  borderRadius: 10,
-  marginHorizontal: 20,
-  marginBottom: 10, 
-  justifyContent: 'center',
-  color: 'black',
+  backgroundColor: 'white',
 },
 container8: {
   flex: 1,
@@ -508,7 +501,24 @@ bottomContainer3: {
   resizeMode: 'contain',
   position: 'relative',
 },
+cardButtonsContainer: {
+  flexDirection: 'row',
+  justifyContent: 'flex-end',
+  marginTop: 10,
+},
 
+editButton: {
+  marginRight: 10,
+},
+editIcon: {
+  width: 30,
+  height: 30,
+  borderRadius: 20,
+  borderWidth: 1,
+  borderColor: '#9985FF',
+  resizeMode: 'contain',
+  alignItems: 'center',
+},
 
 
 });
