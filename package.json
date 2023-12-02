@@ -4,7 +4,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "concurrently \"npm run start-expo\" \"npm run start-flask\"",
-    "start-expo": "expo start",
+    "start-expo": "npx expo start --tunnel",
     "start-flask": "cd assets/backend && flask run --host=0.0.0.0",
     "android": "expo start --android",
     "ios": "expo start --ios",
