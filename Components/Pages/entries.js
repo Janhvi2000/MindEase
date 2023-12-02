@@ -138,7 +138,30 @@ const Journal1 = ({ navigation, route }) => {
   };
   
   const handleDelete = (entry) => {
-    console.log('Delete entry:', entry);
+    console.log('Deleting entry:', entry);
+  
+    db.transaction(
+      (tx) => {
+        tx.executeSql(
+          'DELETE FROM journal_entries WHERE id = ?',
+          [entry.id],
+          (_, results) => {
+            if (results.rowsAffected > 0) {
+              console.log('Entry deleted successfully');
+              fetchEntries(); 
+            } else {
+              console.log('Failed to delete entry');
+            }
+          },
+          (error) => {
+            console.error(error);
+          }
+        );
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
   };
 
   const EntryCard = ({ entry }) => {
