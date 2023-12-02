@@ -30,7 +30,7 @@ import { StyleSheet } from 'react-native';
       width: 300,
       height: 300,
       alignSelf: 'center',
-      marginBottom: 30,
+      marginBottom: 5,
       resizeMode: 'contain',
     },
     secondbuttonText: {
@@ -45,7 +45,7 @@ import { StyleSheet } from 'react-native';
       borderColor: '#9985FF',
       borderWidth: 1,
       width: '80%', 
-      marginBottom: 20,
+      marginBottom: 10,
       alignSelf: 'center',
     },
     bottomContainer: {
@@ -338,6 +338,18 @@ text1: {
   paddingHorizontal: 15,
   color: '#9985FF',
 },
+container6: {
+  backgroundColor: '#ffffff',
+  overflow: 'scroll',
+  height: '60%',
+  width: '100%',
+},
+errorText: {
+  color: 'red',
+  fontSize: 12,
+  alignSelf: 'flex-start',  
+  marginLeft: '15%', 
+},
 
 //chatbot styling
 container7: {
@@ -399,7 +411,7 @@ inputContainer: {
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
-  padding: 16,
+  padding: 10,
   borderTopWidth: 1,
   borderTopColor: '#ccc',
 },
@@ -407,8 +419,6 @@ input1: {
   flex: 1,
   marginRight: 8,
   padding: 8,
-  borderWidth: 1,
-  borderColor: '#ccc',
   borderRadius: 8,
 },
 

@@ -114,6 +114,14 @@ const Home = ({ navigation, route }) => {
     });
   };
 
+  const goToProgress = () => {
+    navigation.navigate('Resource', {
+      username: route.params.username,
+      password: route.params.password,
+      profilePic: selectedSeedName,
+    });
+  };
+
   const goToAbout = () => {
     navigation.navigate('About', {
       username: route.params.username,
@@ -138,6 +146,9 @@ const Home = ({ navigation, route }) => {
             <Image source={home} style={styles.image} />
             <TouchableOpacity style={styles.secondButton}>
               <Text style={styles.secondbuttonText} onPress={goToCrisis}>Crisis Support</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.secondButton}>
+              <Text style={styles.secondbuttonText} onPress={goToProgress}>Progress Meter</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.secondButton}>
               <Text style={styles.secondbuttonText} onPress={goToResource}>Resource Library</Text>
