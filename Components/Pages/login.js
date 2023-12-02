@@ -62,7 +62,6 @@ const Login = ({ navigation }) => {
             onChangeText={(text) => setPassword(text)}
             secureTextEntry={true}
           />
-
           {errorMessage ? <Text style={styles.errorText1}>{errorMessage}</Text> : null}
           <TouchableOpacity
             style={styles.nextButton}

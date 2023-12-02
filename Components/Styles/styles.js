@@ -367,7 +367,7 @@ chatContainer: {
   paddingTop: 20,
 },
 chatContentContainer: {
-  paddingBottom: 40, // Adjusted to allow space for padding after the last message
+  paddingBottom: 40, 
 },
 userMessageContainer: {
   flexDirection: 'row',
@@ -426,6 +426,90 @@ input1: {
   padding: 8,
   borderRadius: 8,
 },
+
+//journal
+input3: {
+  height: 50,
+  width: '90%',
+  borderColor: '#9985FF',
+  borderWidth: 1,
+  paddingHorizontal: 8,
+  borderRadius: 10,
+  marginHorizontal: 20,
+  marginBottom: 10, 
+  justifyContent: 'center',
+  color: 'black',
+  padding: 15,
+},
+input2: {
+  borderColor: '#9985FF',
+  width: '90%',
+  borderWidth: 1,
+  paddingHorizontal: 8,
+  borderRadius: 10,
+  marginHorizontal: 20,
+  marginBottom: 10, 
+},
+dropDownContainer: {
+  height: '200%',
+  width: '90%',
+  borderColor: '#9985FF',
+  borderWidth: 1,
+  paddingHorizontal: 8,
+  borderRadius: 10,
+  marginHorizontal: 20,
+  marginBottom: 10, 
+  justifyContent: 'center',
+  color: 'black',
+},
+container8: {
+  flex: 1,
+  backgroundColor: '#ffffff',
+  bottom: 0,
+},
+
+
+
+//entrycard
+card: {
+  borderWidth: 1,
+  borderColor: '#ccc',
+  borderRadius: 8,
+  padding: 16,
+  marginVertical: 10,
+  marginHorizontal: 20,
+  width: '90%',
+},
+heading: {
+  fontSize: 18,
+  fontWeight: 'bold',
+},
+dateTime: {
+  color: '#555',
+  marginTop: 8,
+},
+mood: {
+  marginTop: 8,
+},
+thoughts: {
+  marginTop: 8,
+},
+bottomContainer2: {
+  marginTop: 20,
+  marginBottom: 10,
+  width: '100%',
+  height: 470,
+  resizeMode: 'contain',
+  position: 'relative',
+},
+bottomContainer3: {
+  bottom: -30,
+  width: '100%',
+  resizeMode: 'contain',
+  position: 'relative',
+},
+
+
 
 });
   

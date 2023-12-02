@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity,TouchableWithoutFeedback, Keyboard, Linking, FlatList, Image, TextInput, Button, StyleSheet, ScrollView } from 'react-native';
+import DropDownPicker from 'react-native-dropdown-picker';
+import { init, openDatabase } from 'expo-sqlite';
 import styles from '../Styles/styles';
-import home from '../Pictures/home.png';
 import bell from '../Pictures/bell.png';
-import { openDatabase } from 'expo-sqlite';
-
+import about from '../Pictures/about.png';
 import Callie from '../Pictures/Callie.png'; 
 import Abby from '../Pictures/Abby.png';
 import Whiskers from '../Pictures/Whiskers.png';
@@ -35,6 +35,8 @@ import Rascal from '../Pictures/Rascal.png';
 import Bandit from '../Pictures/Bandit.png';
 import Nala from '../Pictures/Nala.png';
 import Tigger from '../Pictures/Tigger.png';
+
+const db = openDatabase('user.db');
 
 const imageMapping = {
   Callie: Callie,
@@ -69,14 +71,16 @@ const imageMapping = {
   Tigger: Tigger,
 };
 
-const db = openDatabase('user.db'); 
-
-const Home = ({ navigation, route }) => {
-
+const Journal = ({ navigation, route }) => {
   const { username, password, profilePic } = route.params;
-
   const selectedSeedName = profilePic;
   const selectedSeedImage = imageMapping[selectedSeedName];
+
+  const [entries, setEntries] = useState([]);
+
+  useEffect(() => {
+    fetchEntries();
+  }, []);
 
   const conso = () => {
     console.log('Notification pressed');
@@ -90,90 +94,78 @@ const Home = ({ navigation, route }) => {
     });
   };
 
-  const goToEntries = () => {
-    navigation.navigate('Entries', {
+  const fetchEntries = () => {
+    db.transaction(
+      (tx) => {
+        tx.executeSql(
+          'SELECT * FROM journal_entries WHERE username = ?',
+          [username],
+          (_, { rows }) => {
+            const entriesArray = rows._array;
+            setEntries(entriesArray);
+            console.log('Filtered Entries:', entriesArray);
+          },
+          (error) => {
+            console.error(error);
+          }
+        );
+      },
+      (error) => {
+        console.error(error);
+      },
+      () => {}
+    );
+  };
+
+  const goToHome = () => {
+    navigation.navigate('Home', {
       username: route.params.username,
       password: route.params.password,
       profilePic: selectedSeedName,
     });
   };
 
-  const goToFeedback = () => {
-    navigation.navigate('Feedback', {
-      username: route.params.username,
-      password: route.params.password,
-      profilePic: selectedSeedName,
-    });
+  const EntryCard = ({ entry }) => {
+    return (
+      <View style={styles.card}>
+        <Text style={styles.heading}>{entry.heading}</Text>
+        <Text style={styles.dateTime}>{entry.dateTime}</Text>
+        <Text style={styles.mood}>Mood: {entry.mood}</Text>
+        <Text style={styles.thoughts}>Thoughts: {entry.thoughts}</Text>
+      </View>
+    );
   };
 
-  const goToCrisis = () => {
-    navigation.navigate('Crisis', {
-      username: route.params.username,
-      password: route.params.password,
-      profilePic: selectedSeedName,
-    });
-  };
-
-  const goToResource = () => {
-    navigation.navigate('Resource', {
-      username: route.params.username,
-      password: route.params.password,
-      profilePic: selectedSeedName,
-    });
-  };
-
-  const goToProgress = () => {
-    navigation.navigate('Progress', {
-      username: route.params.username,
-      password: route.params.password,
-      profilePic: selectedSeedName,
-    });
-  };
-
-  const goToAbout = () => {
-    navigation.navigate('About', {
-      username: route.params.username,
-      password: route.params.password,
-      profilePic: selectedSeedName,
-    });
-  };
+  const renderEntryItem = ({ item }) => <EntryCard entry={item} />;
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false} style={styles.container2}>
-      <View style={{ backgroundColor: '#ffffff', paddingHorizontal: 15 }}>
+    <View style={styles.container2}>
+      <View style={{ backgroundColor: '#ffffff', paddingHorizontal: 15, marginBottom: 20 }}>
         <View style={{ flexDirection: 'row' }}>
           <View style={{ flex: 1 }}></View>
           <TouchableOpacity style={styles.notif} onPress={conso}>
             <Image source={bell} style={styles.bell} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.profileImageContainerSmall} onPress={goToProfile}>
-            <Image source={selectedSeedImage} style={styles.profileImage}/> 
+            <Image source={selectedSeedImage} style={styles.profileImage} />
           </TouchableOpacity>
         </View>
-        <View style={styles.container}>
-            <Image source={home} style={[styles.image, {top: -10}]} />
-            <TouchableOpacity style={[styles.secondButton, {top: -30}]}>
-              <Text style={styles.secondbuttonText} onPress={goToCrisis}>Crisis Support</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.secondButton, {top: -30}]}>
-              <Text style={styles.secondbuttonText} onPress={goToResource}>Resource Library</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.secondButton, {top: -30}]}>
-              <Text style={styles.secondbuttonText} onPress={goToProgress}>Journal Page</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.secondButton, {top: -30}]}>
-              <Text style={styles.secondbuttonText} onPress={goToEntries}>Entries</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.secondButton, {top: -30}]}>
-              <Text style={styles.secondbuttonText} onPress={goToFeedback}>Feedback</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.secondButton, {top: -30, marginBottom: 30}]}>
-              <Text style={styles.secondbuttonText} onPress={goToAbout}>About Page</Text>
-            </TouchableOpacity>
+        <View style = {styles.bottomContainer2}>
+        <FlatList
+          data={entries}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={renderEntryItem}
+          style={{marginTop: 20}}
+        />
         </View>
+         <View style = {styles.bottomContainer3}>
+          <TouchableOpacity style={styles.nextButton} onPress={goToHome}>
+            <Text style={styles.nextbuttonText}>Home</Text>
+          </TouchableOpacity>
+          </View>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
-export default Home;
+export default Journal;
