@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity,TouchableWithoutFeedback, Keyboard, Linking, Image, TextInput, Button, StyleSheet, ScrollView, Flat } from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
 import { openDatabase } from 'expo-sqlite';
 import styles from '../Styles/styles';
 import bell from '../Pictures/bell.png';
-import about from '../Pictures/about.png';
 import Callie from '../Pictures/Callie.png'; 
 import Abby from '../Pictures/Abby.png';
 import Whiskers from '../Pictures/Whiskers.png';
@@ -71,52 +69,69 @@ const imageMapping = {
   Tigger: Tigger,
 };
 
+
 const Journal = ({ navigation, route }) => {
-    const { username, password, profilePic } = route.params;
+    const { username, password, profilePic, isEditing: routeIsEditing, editingEntry: routeEditingEntry } = route.params;
     const selectedSeedName = profilePic;
     const selectedSeedImage = imageMapping[selectedSeedName];
     const [heading, setHeading] = useState('');
     const [dateTime, setDateTime] = useState(new Date());
-    const [mood, setMood] = useState('');
     const [thoughts, setThoughts] = useState('');
+    const [isEditing, setIsEditing] = useState(routeIsEditing || false); 
+    const [editingEntry, setEditingEntry] = useState(routeEditingEntry || null); 
+    const [mood, setMood] = useState('');
+    const [value, setValue] = useState(null); 
     const [open, setOpen] = useState(false);
-    const [value, setValue] = useState(null);
-    const [items, setItems] = useState([
-      { label: 'Happy', value: 'Happy' },
-      { label: 'Sad', value: 'Sad' },
-      { label: 'Excited', value: 'Excited' },
-      { label: 'Angry', value: 'Angry' },
-      { label: 'Other', value: 'Other' },
-    ]);
     const [entries, setEntries] = useState([]);
-  
+
+    console.log("Entry+mood+1:", value);
+
     useEffect(() => {
-      fetchEntries();
-      setDateTime(new Date());
-    }, []);
-  
+        if (isEditing && editingEntry) {
+            setHeading(editingEntry.heading);
+            setDateTime(new Date());
+    
+            if (editingEntry.mood !== undefined && editingEntry.mood !== null) {
+                setValue(editingEntry.mood);
+                setMood(editingEntry.mood);
+            } else {
+                setValue(null);
+                setMood(''); 
+            }
+    
+            setThoughts(editingEntry.thoughts);
+        } else {
+            setHeading('');
+            setDateTime(new Date());
+            setMood(''); 
+            setThoughts('');
+            setValue(null);
+        }
+    
+        fetchEntries();
+    }, [isEditing, editingEntry]);
+
     const fetchEntries = () => {
-        db.transaction(
-          (tx) => {
-            tx.executeSql(
-              'SELECT * FROM journal_entries',
-              [],
-              (_, { rows }) => {
-                const entriesArray = rows._array; 
-                setEntries(entriesArray);
-                console.log('All Entries:', entriesArray);
-              },
-              (error) => {
-                console.error(error);
-              }
-            );
-          },
-          (error) => {
-            console.error(error);
-          },
-          () => {}
-        );
-      };
+      db.transaction(
+        (tx) => {
+          tx.executeSql(
+            'SELECT * FROM journal_entries',
+            [],
+            (_, { rows }) => {
+              const entriesArray = rows._array;
+              setEntries(entriesArray);
+            },
+            (error) => {
+              console.error(error);
+            }
+          );
+        },
+        (error) => {
+          console.error(error);
+        },
+        () => {}
+      );
+    };
   
     const saveJournalEntry = () => {
       const formattedDateTime = `${dateTime.toLocaleDateString()} ${dateTime.toLocaleTimeString([], {
@@ -136,7 +151,7 @@ const Journal = ({ navigation, route }) => {
             (tx, results) => {
               if (results.rowsAffected > 0) {
                 console.log('Journal Entry Saved Successfully');
-                fetchEntries(); 
+                fetchEntries();
               } else {
                 console.log('Failed to save Journal Entry');
               }
@@ -153,9 +168,44 @@ const Journal = ({ navigation, route }) => {
       );
     };
   
+    const updateJournalEntry = () => {
+        const formattedDateTime = `${dateTime.toLocaleDateString()} ${dateTime.toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit',
+          })}`;
+      
+        db.transaction(
+          (tx) => {
+            tx.executeSql(
+              'UPDATE journal_entries SET heading=?, dateTime=?, mood=?, thoughts=? WHERE id=?',
+              [heading, formattedDateTime, mood, thoughts, editingEntry.id],
+              (tx, results) => {
+                if (results.rowsAffected > 0) {
+                  console.log('Journal Entry Updated Successfully');
+                  fetchEntries();
+                } else {
+                  console.log('Failed to update Journal Entry');
+                }
+              },
+              (error) => {
+                console.error(error);
+              }
+            );
+          },
+          (error) => {
+            console.error(error);
+          },
+          () => {}
+        );
+      };
+  
     const handleTextChange = (inputText) => {
       setThoughts(inputText);
     };
+
+    const dismissKeyboard = () => {
+        Keyboard.dismiss();
+      };
   
     const conso = () => {
       console.log('Notification pressed');
@@ -170,7 +220,7 @@ const Journal = ({ navigation, route }) => {
     };
   
     const goToHome = () => {
-      saveJournalEntry();
+      isEditing ? updateJournalEntry() : saveJournalEntry();
       navigation.navigate('Home', {
         username: route.params.username,
         password: route.params.password,
@@ -192,59 +242,45 @@ const Journal = ({ navigation, route }) => {
           </View>
         </View>
         <View style={styles.container8}>
-          <TextInput
-            style={styles.input3}
-            placeholder="Heading"
-            value={heading}
-            onChangeText={(text) => setHeading(text)}
-          />
-  
-          <Text style={styles.input3}>
-            {dateTime.toLocaleDateString('en-GB', {
-              day: 'numeric',
-              month: 'long',
-              year: 'numeric',
-            }).replace(',', '')}{' '}
-          </Text>
-  
-          <Text style={styles.input3}>
-            {dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}
-          </Text>
-  
-          <DropDownPicker
-            open={open}
-            value={value}
-            items={items}
-            style={styles.input3}
-            setOpen={setOpen}
-            setValue={setValue}
-            setItems={setItems}
-            dropDownContainerStyle={styles.dropDownContainer}
-          />
-  
-          {value === 'Other' && (
             <TextInput
-              style={[styles.input3, { marginTop: open ? 50 : 0 }]}
-              placeholder="Enter your own mood"
-              value={mood}
-              onChangeText={(text) => setMood(text)}
+                style={styles.input3}
+                placeholder="Heading"
+                value={heading}
+                onChangeText={(text) => setHeading(text)}
             />
-          )}
-  
-          <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+    
+            <Text style={styles.input3}>
+                {dateTime.toLocaleDateString('en-GB', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
+                }).replace(',', '')}{' '}
+            </Text>
+    
+            <Text style={styles.input3}>
+                {dateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}
+            </Text>
+
             <TextInput
-              style={[styles.input2, { marginTop: open ? 120 : 0 }, { height: open ? '20%' : '40%' }]}
-              onChangeText={handleTextChange}
-              placeholder="Thoughts"
-              multiline={true}
-              numberOfLines={4}
-              onSubmitEditing={Keyboard.dismiss}
+                style={styles.input3}
+                placeholder="Mood"
+                value={mood}
+                onChangeText={(text) => setMood(text)}
             />
-          </TouchableWithoutFeedback>
+
+            <TouchableWithoutFeedback onPress={dismissKeyboard} accessible={false}>
+            <TextInput
+                style={styles.input2}
+                onChangeText={handleTextChange}
+                placeholder="Thoughts"
+                multiline={true}
+                defaultValue={isEditing && editingEntry ? editingEntry.thoughts : ''}
+            />
+            </TouchableWithoutFeedback>
   
-          <TouchableOpacity style={styles.nextButton} onPress={goToHome}>
-            <Text style={styles.nextbuttonText}>Save</Text>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.nextButton} onPress={goToHome}>
+                <Text style={styles.nextbuttonText}>{isEditing ? 'Update' : 'Save'}</Text>
+            </TouchableOpacity>
         </View>
       </View>
     );

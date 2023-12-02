@@ -35,6 +35,8 @@ import Rascal from '../Pictures/Rascal.png';
 import Bandit from '../Pictures/Bandit.png';
 import Nala from '../Pictures/Nala.png';
 import Tigger from '../Pictures/Tigger.png';
+import edit from '../Pictures/bot.png';
+import del from '../Pictures/bot.png';
 
 const db = openDatabase('user.db');
 
@@ -71,7 +73,7 @@ const imageMapping = {
   Tigger: Tigger,
 };
 
-const Journal = ({ navigation, route }) => {
+const Journal1 = ({ navigation, route }) => {
   const { username, password, profilePic } = route.params;
   const selectedSeedName = profilePic;
   const selectedSeedImage = imageMapping[selectedSeedName];
@@ -103,7 +105,6 @@ const Journal = ({ navigation, route }) => {
           (_, { rows }) => {
             const entriesArray = rows._array;
             setEntries(entriesArray);
-            console.log('Filtered Entries:', entriesArray);
           },
           (error) => {
             console.error(error);
@@ -125,18 +126,44 @@ const Journal = ({ navigation, route }) => {
     });
   };
 
+  const handleEdit = (entry) => {
+    console.log("Entry from progress: ",entry);
+    navigation.navigate('Progress', {
+      username: route.params.username,
+      password: route.params.password,
+      profilePic: selectedSeedName,
+      editingEntry: entry, 
+      isEditing: true,
+    });
+  };
+  
+  const handleDelete = (entry) => {
+    console.log('Delete entry:', entry);
+  };
+
   const EntryCard = ({ entry }) => {
     return (
       <View style={styles.card}>
-        <Text style={styles.heading}>{entry.heading}</Text>
-        <Text style={styles.dateTime}>{entry.dateTime}</Text>
-        <Text style={styles.mood}>Mood: {entry.mood}</Text>
-        <Text style={styles.thoughts}>Thoughts: {entry.thoughts}</Text>
-      </View>
-    );
-  };
+      <Text style={styles.heading}>{entry.heading}</Text>
+      <Text style={styles.dateTime}>{entry.dateTime}</Text>
+      <Text style={styles.mood}>Mood: {entry.mood}</Text>
+      <Text style={styles.thoughts}>Thoughts: {entry.thoughts}</Text>
 
-  const renderEntryItem = ({ item }) => <EntryCard entry={item} />;
+      <View style={styles.cardButtonsContainer}>
+        <TouchableOpacity style={styles.editButton} onPress={() => handleEdit(entry)}>
+          <Image source={edit} style={styles.editIcon} />
+        </TouchableOpacity>
+        <TouchableOpacity  onPress={() => handleDelete(entry)}>
+          <Image source={del} style={styles.editIcon} />
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
+const renderEntryItem = ({ item }) => (
+  <EntryCard entry={item} onDelete={handleDelete} onEdit={handleEdit} />
+);
 
   return (
     <View style={styles.container2}>
@@ -168,4 +195,4 @@ const Journal = ({ navigation, route }) => {
   );
 };
 
-export default Journal;
+export default Journal1;
