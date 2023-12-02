@@ -9,27 +9,38 @@ const db = openDatabase('user.db');
 const Login = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const loginUser = () => {
     db.transaction((tx) => {
       tx.executeSql(
-        'SELECT * FROM users WHERE username = ? AND password = ?',
-        [username, password],
+        'SELECT * FROM users WHERE username = ?',
+        [username],
         (_, { rows }) => {
           const user = rows.item(0);
+
           if (user) {
-            console.log('Logged in:', user);
-            navigation.navigate('Home', {
-              username,
-              password,
-              profilePic: user.profilePic, 
-            });
+            // If the username exists in the database
+            if (user.password === password) {
+              // Password is correct
+              console.log('Logged in:', user);
+              navigation.navigate('Home', {
+                username,
+                password,
+                profilePic: user.profilePic,
+              });
+            } else {
+              // Incorrect password
+              setErrorMessage('Incorrect password');
+            }
           } else {
-            console.log('Invalid credentials');
+            // Username not in the database
+            setErrorMessage('Username not found');
           }
         },
         (tx, error) => {
           console.error(error);
+          setErrorMessage('Error logging in');
         }
       );
     });
@@ -37,8 +48,7 @@ const Login = ({ navigation }) => {
 
   return (
     <ScrollView style={styles.container6}>
-    <KeyboardAvoidingView  behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{alignItems: 'center',}}>
-     
+      <KeyboardAvoidingView  behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{alignItems: 'center',}}>
         <View style={styles.bottomContainer}>
           <Image source={login} style={styles.image} />
           <TextInput
@@ -52,16 +62,17 @@ const Login = ({ navigation }) => {
             onChangeText={(text) => setPassword(text)}
             secureTextEntry={true}
           />
+
+{errorMessage ? <Text style={styles.errorText1}>{errorMessage}</Text> : null}
           <TouchableOpacity
             style={styles.nextButton}
             onPress={() => loginUser()}
           >
-            <Text style={styles.nextbuttonText}>Login</Text>
+          <Text style={styles.nextbuttonText}>Login</Text>
           </TouchableOpacity>
         </View>
-
-    </KeyboardAvoidingView>
-      </ScrollView>
+      </KeyboardAvoidingView>
+    </ScrollView>
   );
 };
 

@@ -350,6 +350,11 @@ errorText: {
   alignSelf: 'flex-start',  
   marginLeft: '15%', 
 },
+errorText1: {
+  color: 'red',
+  textAlign: 'center',
+  fontSize: 18,
+},
 
 //chatbot styling
 container7: {
