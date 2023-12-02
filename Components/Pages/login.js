@@ -63,7 +63,7 @@ const Login = ({ navigation }) => {
             secureTextEntry={true}
           />
 
-{errorMessage ? <Text style={styles.errorText1}>{errorMessage}</Text> : null}
+          {errorMessage ? <Text style={styles.errorText1}>{errorMessage}</Text> : null}
           <TouchableOpacity
             style={styles.nextButton}
             onPress={() => loginUser()}
