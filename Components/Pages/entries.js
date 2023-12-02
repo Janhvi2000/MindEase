@@ -35,8 +35,8 @@ import Rascal from '../Pictures/Rascal.png';
 import Bandit from '../Pictures/Bandit.png';
 import Nala from '../Pictures/Nala.png';
 import Tigger from '../Pictures/Tigger.png';
-import edit from '../Pictures/bot.png';
-import del from '../Pictures/bot.png';
+import edit from '../Pictures/edit.png';
+import del from '../Pictures/delete.png';
 
 const db = openDatabase('user.db');
 
