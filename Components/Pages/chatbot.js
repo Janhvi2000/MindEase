@@ -100,7 +100,7 @@ const App = ({ navigation, route }) => {
       }
   
       try {
-        const result = await axios.post("http://192.168.1.214:5000/dialogflow", {
+        const result = await axios.post("https://2f03-2603-8000-57f0-b310-60da-71fb-6823-80a5.ngrok.io/dialogflow", {
           session_id: '1',
           text: input,
         });
