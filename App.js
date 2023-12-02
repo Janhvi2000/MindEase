@@ -13,6 +13,8 @@ import Profile from './Components/Pages/profile';
 import Resource from './Components/Pages/resourcelibrary';
 import About from './Components/Pages/about';
 import ChatBot from './Components/Pages/chatbot';
+import Progress from './Components/Pages/progress';
+import Entries from './Components/Pages/entries';
 
 const Stack = createNativeStackNavigator();
 
@@ -74,6 +76,14 @@ function App() {
         <Stack.Screen
           name="ChatBot"
           component={ChatBot}
+        />
+        <Stack.Screen
+          name="Progress"
+          component={Progress}
+        />
+        <Stack.Screen
+          name="Entries"
+          component={Entries}
         />
       </Stack.Navigator>
     </NavigationContainer>

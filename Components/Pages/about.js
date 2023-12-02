@@ -67,7 +67,7 @@ const imageMapping = {
   Tigger: Tigger,
 };
 
-const Login = ({navigation,route}) => {
+const About= ({navigation,route}) => {
   const { username, password, profilePic } = route.params;
   const selectedSeedName = profilePic;
   const selectedSeedImage = imageMapping[selectedSeedName];
@@ -110,4 +110,4 @@ const Login = ({navigation,route}) => {
   );
 };
 
-export default Login;
+export default About;
