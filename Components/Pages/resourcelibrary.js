@@ -73,7 +73,11 @@ const imageMapping = {
 const blurhash =
   '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
 
-const videoIds = ["2diE_SuSQAw", "pes7H4ECTdw", "RPyzPH8sB2A", "aOGP3mltnZE", "MGdgUP8XLwc", "hEfCxEdDtGU", "0Yr4hyFSJPk", "xQ2XroDdSAs", "W14E1nUY95U", "4DzFFVZPCw4", "gHf-L0uXffU", "BOWMIsUUfCA"];
+const videoIds1 = ["2diE_SuSQAw", "pes7H4ECTdw", "RPyzPH8sB2A", "aOGP3mltnZE", "MGdgUP8XLwc", "hEfCxEdDtGU", "0Yr4hyFSJPk", "xQ2XroDdSAs", "W14E1nUY95U", "4DzFFVZPCw4"];
+const videoIds2 = ['YcDC_4vn3OQ', '7CcZ7gyFXv0', 'K_MuJfCZnVM', 'JHutyR35FMY', 'FzFXObAqUtY', 'iCvmsMzlF7o', 's-X-P0tzlF8', 'ZcDLzppD4Jc', 'AMYWW-2xx2M', 'Gwed919jYhw'];
+const videoIds3 = ['BOWMIsUUfCA', '-5Z4cLwd698', 'T46SJQ8Cqbc', 'RPyzPH8sB2A', 'TknaM6okZM8', 'Bq-JnWSmTUU', 'USsqkd-E9ag', 'RZWf2_2L2v8', '1Evwgu369Jw', '5CpRY9-MIHA'];
+const videoIds4 = ['Z0IgYTi4aTs', 'EsFRTYws1L8', 'bZuioqGM2Vs', 'W14E1nUY95U', '4DzFFVZPCw4', 'Pkhk1VOnPHs', 'Yb3erOGtEOc', 'Fb-clvcX7fI', 'DEztbnt322A', 'LgPvp-FWtK8'];
+
 
 const Resource = ({ navigation, route }) => {
   const [selectedSeedIndex1, setSelectedSeedIndex1] = useState(0);
@@ -97,27 +101,27 @@ const Resource = ({ navigation, route }) => {
   };
 
   const getCurrentAndNextVideos1 = () => {
-    const currentIndex = selectedSeedIndex1 % videoIds.length;
-    const nextIndex = (currentIndex + 1) % videoIds.length;
-    return [videoIds[currentIndex], videoIds[nextIndex]];
+    const currentIndex = selectedSeedIndex1 % videoIds1.length;
+    const nextIndex = (currentIndex + 1) % videoIds1.length;
+    return [videoIds1[currentIndex], videoIds1[nextIndex]];
   };
 
   const getCurrentAndNextVideos2 = () => {
-    const currentIndex = selectedSeedIndex2 % videoIds.length;
-    const nextIndex = (currentIndex + 1) % videoIds.length;
-    return [videoIds[currentIndex], videoIds[nextIndex]];
+    const currentIndex = selectedSeedIndex2 % videoIds2.length;
+    const nextIndex = (currentIndex + 1) % videoIds2.length;
+    return [videoIds2[currentIndex], videoIds2[nextIndex]];
   };
 
   const getCurrentAndNextVideos3 = () => {
-    const currentIndex = selectedSeedIndex3 % videoIds.length;
-    const nextIndex = (currentIndex + 1) % videoIds.length;
-    return [videoIds[currentIndex], videoIds[nextIndex]];
+    const currentIndex = selectedSeedIndex3 % videoIds3.length;
+    const nextIndex = (currentIndex + 1) % videoIds3.length;
+    return [videoIds3[currentIndex], videoIds3[nextIndex]];
   };
 
   const getCurrentAndNextVideos4 = () => {
-    const currentIndex = selectedSeedIndex4 % videoIds.length;
-    const nextIndex = (currentIndex + 1) % videoIds.length;
-    return [videoIds[currentIndex], videoIds[nextIndex]];
+    const currentIndex = selectedSeedIndex4 % videoIds4.length;
+    const nextIndex = (currentIndex + 1) % videoIds4.length;
+    return [videoIds4[currentIndex], videoIds4[nextIndex]];
   };
 
   const goToNextSeed = () => {

@@ -212,7 +212,7 @@ buttonItem: {
   borderColor: '#9985FF',
   borderWidth: 1,
   width: '80%',
-  height: '9%',
+  height: '7%',
   marginBottom: 10,
 },
 iconTextContainer: {
@@ -388,6 +388,7 @@ userMessage: {
   maxWidth: '80%',
   alignSelf: 'flex-end',
   marginBottom: 8,
+  fontSize: 16,
 },
 botMessage: {
   backgroundColor: '#d9d9d9',
@@ -396,6 +397,7 @@ botMessage: {
   maxWidth: '80%',
   alignSelf: 'flex-start',
   marginBottom: 8,
+  fontSize: 16,
 },
 iconContainer: {
   marginRight: 8,
@@ -416,15 +418,16 @@ inputContainer: {
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
-  padding: 10,
+  padding: 4,
   borderTopWidth: 1,
   borderTopColor: '#ccc',
 },
 input1: {
   flex: 1,
   marginRight: 8,
-  padding: 8,
+  padding: 10,
   borderRadius: 8,
+  fontSize: 16,
 },
 
 //journal
