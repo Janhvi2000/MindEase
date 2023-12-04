@@ -122,7 +122,7 @@ const Crisis = ({ navigation,route }) => {
           </View>
         </View>
         <View style={styles.container}>
-        <Image source={crisis} style={styles.image} />
+        <Image source={crisis} style={[styles.image, {marginBottom: 60}]} />
 
         <TouchableOpacity style={styles.buttonItem} onPress={openDialer}>
         <View style={styles.iconTextContainer}>
