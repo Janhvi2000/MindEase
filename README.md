@@ -17,8 +17,10 @@ MindEase is a comprehensive mental health application designed to offer personal
 
 1. **Personalized Assessments & Goal Setting**: Users complete assessments to identify their mental health needs and set personalized goals, addressing their specific concerns.
 2. **Therapy Toolbox**: Access to various resources, such as breathing exercises, guided meditations, and cognitive behavioral therapy (CBT) techniques, aiding users in coping with daily stressors and mental health issues.
-3. **Chatbot**: A platform for users to share their feelings, thoughts etc. and be supported anonymously.
+3. **Chatbot**: A platform for users to share their feelings, thoughts, etc., and be supported anonymously.
 4. **Guided Journeys & Progress Tracking**: Users can follow guided paths to achieve mental wellness milestones, while tracking their progress and adjustments in their mental health journey.
+5. **Journaling**: Users can save entries as they see fit and see their past entries also.
+6. **Call/Message helplines on emergency**: Users can contact a professional in a crisis if needed.
 
 ## APIs
 
